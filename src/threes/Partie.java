@@ -17,9 +17,6 @@ public class Partie {
         this.nbCoups = 0;
     }
     
-    public void fusionCellule(Cellule Cel1, Cellule Cel2){
-        //en fonction de l'action choisie par l'utilisateur (4 jBUttondroite, gauche, haut, bas)
-    }
     
     public void lancerPartie(){
         

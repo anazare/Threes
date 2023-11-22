@@ -23,6 +23,9 @@ public class Cellule {
         }
     }
     
+    public void fusionCellule(Cellule Cel1, Cellule Cel2){
+        this.nombreCellule=Cel1.nombreCellule+Cel2.nombreCellule;
+    }
     
 
     @Override
