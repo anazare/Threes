@@ -19,7 +19,7 @@ public class Partie {
     
     
     public void lancerPartie(){
-        
+        // est ce que c'est nécessaire ou est ce qu'on peut le faire directement sur le design ? 
     }
     
     
