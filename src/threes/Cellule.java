@@ -24,7 +24,7 @@ public class Cellule {
     }
     
     public void fusionCellule(Cellule Cel1, Cellule Cel2){
-        if ((Cel1.nombreCellule==1 && Cel2.nombreCellule==3) || ((Cel1.nombreCellule==3 & Cel2.nombreCellule==1))){
+        if ((Cel1.nombreCellule==1 && Cel2.nombreCellule==3) || ((Cel1.nombreCellule==3 && Cel2.nombreCellule==1))){
             this.nombreCellule=Cel1.nombreCellule+Cel2.nombreCellule;
         } else if (Cel1.nombreCellule==Cel2.nombreCellule){
             this.nombreCellule=Cel1.nombreCellule+Cel2.nombreCellule;
