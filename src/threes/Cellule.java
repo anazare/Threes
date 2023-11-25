@@ -11,10 +11,17 @@ package threes;
 public class Cellule {
     int nombreCellule; 
 
+    /**
+     *Construit une cellule de valeur 0
+     */
     public Cellule() {
         this.nombreCellule = 0;
     }
     
+    /**
+     * Vérifie si la cellule est remplie 
+     * @return boolean 
+     */
     public boolean getEtat(){
         if (this.nombreCellule==0){
             return false;
@@ -23,8 +30,19 @@ public class Cellule {
         }
     }
     
-    public void fusionCellule(Cellule Cel1, Cellule Cel2){
-        if ((Cel1.nombreCellule==1 && Cel2.nombreCellule==3) || ((Cel1.nombreCellule==3 && Cel2.nombreCellule==1))){
+    public void eteindreCel(){
+        if (this.getEtat()==true){
+            this.nombreCellule=0;
+        }
+    }
+    
+    /**
+     * Additionne les cellules 
+     * @param Cel1
+     * @param Cel2
+     */
+    public void additionCellule(Cellule Cel1, Cellule Cel2){
+        if ((Cel1.nombreCellule==1 && Cel2.nombreCellule==2) || ((Cel1.nombreCellule==2 && Cel2.nombreCellule==1))){
             this.nombreCellule=Cel1.nombreCellule+Cel2.nombreCellule;
         } else if (Cel1.nombreCellule==Cel2.nombreCellule){
             this.nombreCellule=Cel1.nombreCellule+Cel2.nombreCellule;

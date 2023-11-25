@@ -19,7 +19,10 @@ public class Partie {
     
     
     public void lancerPartie(){
-        // est ce que c'est nécessaire ou est ce qu'on peut le faire directement sur le design ? 
+        grille.EteindreCellulesGrille();
+        //générer deux nb aléatoirement entre 1 et 4 
+        // faire apparaitre aléatoirement deux cellules 1 ou 3 
+        // a chaque fois que le joureur joue (nbTours ++ et une autre cellule apparait)
     }
     
     

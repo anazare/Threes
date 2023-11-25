@@ -4,19 +4,25 @@
  */
 package threes;
 
+import java.awt.GridLayout;
+
 /**
  *
  * @author anaza
  */
 public class Grille {
-    int nbLignes=4;
-    int nbColonnes=4; 
+    int nbLignes;
+    int nbColonnes; 
     Cellule[][] matriceCellules;
 
     /**
-     * crée une grille de jeu 4X4
+     * crée une grille de jeu de Cellules (nbL X nbC)
+     * @param nbL
+     * @param nbC
      */
-    public Grille() {
+    public Grille(int nbL, int nbC) {
+        this.nbLignes=nbL;
+        this.nbColonnes=nbC;
         matriceCellules = new Cellule[nbLignes][nbColonnes];
         for (int i=0; i<nbLignes; i++){
             for (int j=0; j<nbColonnes; j++ ){
@@ -24,6 +30,16 @@ public class Grille {
             }
         }
     }
+    
+    public void EteindreCellulesGrille(){
+        for (int i=0; i<nbLignes; i++){
+            for (int j=0; j<nbColonnes; j++ ){
+                matriceCellules[i][j].nombreCellule=0;
+            }
+        }
+    }
+
+   
     
     
 }
