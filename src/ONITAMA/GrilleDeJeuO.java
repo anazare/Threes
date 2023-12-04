@@ -15,11 +15,7 @@ public class GrilleDeJeuO {
     int nbColonnes;
 
     public GrilleDeJeuO(int p_nbLignes, int p_nbColonnes) {
-        /*
-        Scanner sc = new Scanner(System.in);
-        System.out.println("De quel taille voulez-vous votre grille?\n" + "1)Facile 6X6\n" + "Moyenne 8X8\n" + "Difficile 10X10");
-        int y = sc.nextInt();
-         */
+        
         this.nbLignes = p_nbLignes;
         this.nbColonnes = p_nbColonnes;
         matriceCellules = new Cellule[nbLignes][nbColonnes];
