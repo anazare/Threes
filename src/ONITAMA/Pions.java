@@ -8,6 +8,6 @@ package ONITAMA;
  *
  * @author anaza
  */
-public class Pions {
+public class Pions extends Pawn {
     
 }

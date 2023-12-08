@@ -8,6 +8,7 @@ package ONITAMA;
  *
  * @author anaza
  */
-public class Chevaliers extends Pions {
+public class Pawn {
+    String type;
     
 }

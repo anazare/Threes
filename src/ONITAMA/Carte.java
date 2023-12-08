@@ -9,5 +9,16 @@ package ONITAMA;
  * @author redou
  */
 public class Carte {
+    String nom; //nom de la carte 
+    String statut; //pioche/flottante/joueur
+    int DegresDeplacement; 
+
+    public Carte(String statut, int DegresDeplacement) {
+        this.statut = "pioche";
+        this.DegresDeplacement = DegresDeplacement;
+    }
     
+    public void DéplacementDroite(){
+        
+    }
 }
