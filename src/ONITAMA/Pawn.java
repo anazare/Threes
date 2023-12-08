@@ -9,7 +9,7 @@ package ONITAMA;
  * @author anaza
  */
 public class Pawn {
-    String nom; 
+    //String nom; 
     String type;
     int ligne; 
     int colonne;

@@ -4,55 +4,25 @@
  */
 package ONITAMA;
 
-import static java.util.Arrays.equals;
-import static java.util.Objects.equals;
+import java.util.ArrayList;
 
 /**
  *
  * @author redou
  */
 public class Carte {
-    String nom; //nom de la carte 
-    //String statut; //pioche/flottante/joueur (peut être pas ici)
-    int DegresDeplacementLigne; 
-    int DegresDeplacementColonne; 
+    String nom;
+    //String statut; //pioche/flottante/joueur (pas ici)
+    //nom de la carte 
+    ArrayList<Integer> DegresDeplacement;
+    
 
 
-    public Carte( int DegresDeplacementLigne, int DegresDeplacementColonne) { //String statut
-        //this.statut = "pioche";
-        this.DegresDeplacementLigne = DegresDeplacementLigne;
-        this.DegresDeplacementColonne=DegresDeplacementColonne;
+    public Carte(int DegresDeplacementLigne, int DegresDeplacementColonne) { 
+        this.DegresDeplacement = new ArrayList<>();
+        DegresDeplacement.add(DegresDeplacementLigne);
+        DegresDeplacement.add(DegresDeplacementColonne);
     }
     
-    public void DéplacementDroite(Pawn pawn, int ligne, int colonne){
-        if ("roi".equals(pawn.VisualiserType(pawn))){
-            colonne+=1;
-        } else {
-            colonne+=1;
-        }
-    }
     
-    public void DéplacementGauche(Pawn pawn, int ligne, int colonne){
-        if ("roi".equals(pawn.VisualiserType(pawn))){
-            colonne-=1;
-        } else {
-            colonne-=1;
-        }
-    }
-    
-    public void DéplacementHaut(Pawn pawn, int ligne, int colonne){
-        if ("roi".equals(pawn.VisualiserType(pawn))){
-            ligne-=1;
-        } else {
-            ligne-=1;
-        }
-    }
-    
-    public void DéplacementBas (Pawn pawn, int ligne, int colonne){
-        if ("roi".equals(pawn.VisualiserType(pawn))){
-            ligne+=1;
-        } else {
-            ligne+=1;
-        }
-    }
 }

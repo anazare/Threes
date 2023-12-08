@@ -18,5 +18,4 @@ public class BOAR extends Carte {
     }
     
     
-    
 }

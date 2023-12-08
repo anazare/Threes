@@ -34,6 +34,38 @@ public class GrilleDeJeuO {
             matriceCellules[5][i].activerCellule(2);
         }
     }
+    
+    public void DéplacementDroite(Pawn pawn, int ligne, int colonne){
+        if ("roi".equals(pawn.VisualiserType(pawn))){
+            colonne+=1;
+        } else {
+            colonne+=1;
+        }
+    }
+    
+    public void DéplacementGauche(Pawn pawn, int ligne, int colonne){
+        if ("roi".equals(pawn.VisualiserType(pawn))){
+            colonne-=1;
+        } else {
+            colonne-=1;
+        }
+    }
+    
+    public void DéplacementHaut(Pawn pawn, int ligne, int colonne){
+        if ("roi".equals(pawn.VisualiserType(pawn))){
+            ligne-=1;
+        } else {
+            ligne-=1;
+        }
+    }
+    
+    public void DéplacementBas (Pawn pawn, int ligne, int colonne){
+        if ("roi".equals(pawn.VisualiserType(pawn))){
+            ligne+=1;
+        } else {
+            ligne+=1;
+        }
+    }
 }
 
 
