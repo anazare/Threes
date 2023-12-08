@@ -12,4 +12,8 @@ import ONITAMA.Carte;
  */
 public class CRANE extends Carte {
     
+    public CRANE(int DegresDeplacementLigne, int DegresDeplacementColonne) {
+        super(DegresDeplacementLigne, DegresDeplacementColonne);
+    }
+    
 }
