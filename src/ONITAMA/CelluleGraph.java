@@ -35,7 +35,7 @@ public class CelluleGraph extends JButton {
             case 2 -> g.setColor(Color.blue);
             default -> g.setColor(Color.white);
         }
-        g.fillOval(2, 2, w - 4, h - 4);
+        g.fillRect(2, 2, 110, 110);
     }
 
 }

@@ -13,6 +13,11 @@ public class GrilleDeJeuO {
     Cellule[][] matriceCellules;
     int nbLignes;
     int nbColonnes;
+    Carte carte;
+    int positionLigneCarte; 
+    int positionColonneCarte;
+    Pawn pion;
+    
 
     public GrilleDeJeuO(int p_nbLignes, int p_nbColonnes) {
         
@@ -66,6 +71,21 @@ public class GrilleDeJeuO {
             ligne+=1;
         }
     }
+    
+    public void VerifDeplacement(int ligne, int colonne){
+        if ("BOAR".equals(this.carte.nom)){
+            if (ligne==this.positionLigneCarte+1){
+                DéplacementHaut(pion,ligne,colonne);
+            } else if (colonne==this.positionColonneCarte+1){
+                DéplacementDroite(pion, ligne, colonne);
+            } else if (colonne==this.positionColonneCarte-1){
+                DéplacementGauche(pion, ligne, colonne);
+            }
+        } else if ("COBRA".equals(this.carte.nom)){
+            
+        }
+    }
+    
 }
 
 

@@ -29,8 +29,8 @@ public class Jeu_Principale extends javax.swing.JFrame {
             this.revalidate();
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
-            CelluleGraph bouton_cellule = new CelluleGraph( grille.matriceCellules[i][j], 110,110);
-            PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+                CelluleGraph bouton_cellule = new CelluleGraph(grille.matriceCellules[i][j], 110,110);
+                PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }
     }
