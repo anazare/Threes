@@ -22,7 +22,9 @@ public class Pawn {
         
     }
     
-    public String VisualiserType(pawn){
+    public String VisualiserType(Pawn pawn){
         return type;
     }
+    
+    
 }
