@@ -13,14 +13,15 @@ import static java.util.Objects.equals;
  */
 public class Carte {
     String nom; //nom de la carte 
-    String statut; //pioche/flottante/joueur
-    int DegresDeplacement; 
-//    int colonne;
-//    int ligne;
+    //String statut; //pioche/flottante/joueur (peut être pas ici)
+    int DegresDeplacementLigne; 
+    int DegresDeplacementColonne; 
 
-    public Carte(String statut, int DegresDeplacement) {
-        this.statut = "pioche";
-        this.DegresDeplacement = DegresDeplacement;
+
+    public Carte( int DegresDeplacementLigne, int DegresDeplacementColonne) { //String statut
+        //this.statut = "pioche";
+        this.DegresDeplacementLigne = DegresDeplacementLigne;
+        this.DegresDeplacementColonne=DegresDeplacementColonne;
     }
     
     public void DéplacementDroite(Pawn pawn, int ligne, int colonne){
