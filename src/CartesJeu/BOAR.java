@@ -12,4 +12,8 @@ import ONITAMA.Carte;
  */
 public class BOAR extends Carte {
     
+    public BOAR(String statut, int DegresDeplacement) {
+        super(statut, DegresDeplacement);
+    }
+    
 }
