@@ -14,9 +14,11 @@ public class GrilleDeJeuO {
     int nbLignes;
     int nbColonnes;
     Carte carte;
-    int positionLigneCarte;
-    int positionColonneCarte;
     Pawn pion;
+    int positionLigneCarte=pion.getLigne(pion); // modifier pour l'intituler pion 
+    int positionColonneCarte=pion.getColonne(pion);
+
+    
 
     public GrilleDeJeuO(int p_nbLignes, int p_nbColonnes) {
 
@@ -125,11 +127,7 @@ public class GrilleDeJeuO {
                 DéplacementBas(pion, ligne, colonne);
                 DéplacementGauche(pion, ligne, colonne);
             }
-
-            if ((colonne == this.positionColonneCarte + 1) || (ligne == this.positionLigneCarte + 1)) {
-                DéplacementBas(pion, ligne, colonne);
-                DéplacementDroite(pion, ligne, colonne);
             }
         }
     }
-}
+

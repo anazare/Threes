@@ -26,5 +26,13 @@ public class Pawn {
         return type;
     }
     
+    public int getLigne(Pawn pawn){
+        return ligne;
+    }
+    
+    public int getColonne(Pawn pawn){
+        return colonne;
+    }
+
     
 }
