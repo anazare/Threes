@@ -9,7 +9,7 @@ package ONITAMA;
  * @author anaza
  */
 public class GrilleDeJeuO {
-
+ 
     Cellule[][] matriceCellules;
     int nbLignes;
     int nbColonnes;
