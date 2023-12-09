@@ -29,7 +29,7 @@ public class Plateau {
     Coord ox1 = new Coord(0,1),ox2 =new Coord(-1,0),ox3=new Coord(1,0);
     Coord rabbit1 = new Coord(1,-1),rabbit2 =new Coord(0,2),rabbit3=new Coord(-1,1);
     Coord rooster1 = new Coord(1,-1),rooster2 =new Coord(-1,1),rooster3=new Coord(0,1),rooster4 = new Coord(0,-1);
-    Coord tiger1 = new Coord(-2,0),tiger2 =new Coord(1,0);
+    Coord tiger1 = new Coord(-2,0),tiger2 =new Coord(1,0); 
    
 
     public Plateau(int taille,  CaseConsole[][] grille) {
