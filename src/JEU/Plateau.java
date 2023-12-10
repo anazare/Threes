@@ -14,6 +14,8 @@ import java.util.*;
  */
 public class Plateau {
     int taille = 5;
+    Joueur j1 = new Joueur("blue");
+    Joueur j2 = new Joueur("red");
     CaseConsole[][] grille;
     ArrayList<CarteConsole> Main;
     Coord nulle = new Coord(0,0),boar1 =new Coord(0,1),boar2=new Coord(-1,0),boar3 = new Coord(0,-1);
@@ -113,24 +115,36 @@ public class Plateau {
                 Main.add(tiger);
             }
         }
+        j1.MainJ.add(Main.get(0));
+        j1.MainJ.add(Main.get(1));
+        j2.MainJ.add(Main.get(3));
+        j2.MainJ.add(Main.get(4));
     }
     
     public void initialiserPlateau(){
         for (int j=0; j<taille;j++){
             if(j!=2){
                 grille[0][j].addPion(0,j,"blue",false);
+                PionConsole Pion = new PionConsole(0,j,"blue",false);
+                j1.PionsJ.add(Pion);
             }
             else{
                 grille[0][j].addPion(0,j,"blue",true);
+                PionConsole Pion = new PionConsole(0,j,"blue",true);
+                j1.PionsJ.add(Pion);
             }
         }
         
          for (int j=0; j<taille;j++){
             if(j!=2){
                 grille[0][j].addPion(4,j,"red",false);
+                PionConsole Pion = new PionConsole(0,j,"red",false);
+                j2.PionsJ.add(Pion);
             }
             else{
                 grille[0][j].addPion(4,j,"red",true);
+                PionConsole Pion = new PionConsole(0,j,"red",true);
+                j2.PionsJ.add(Pion);
             }
         }
         creerMain();
@@ -152,16 +166,28 @@ public class Plateau {
         return CoordPossibles;
     }
     
-    public void Verif(ArrayList<Coord> CoordPossibles){
-        for (Coord in CoordPossibles ){
-            if (Coord.coordonnees.get(0)>5){
-                if (Coord.coordonnees.get(1)>5){
-                    break;
+    public void VerifCoordPossible(Joueur joueur, ArrayList<Coord> CoordPossibles){
+        for (int j=0; j<CoordPossibles.size(); j++){
+                Coord c = CoordPossibles.get(j);
+                int a = c.coordonnees.get(0);
+                int b =c.coordonnees.get(1);
+                CaseConsole cc = grille[a][b];
+                if (a > 5) {
+                    if (b > 5) {
+                        break;
+                    }
                 }
-            }
-            else{
-                grille[Coord.coordonnees.get(0)][Coord.coordonnees.get(1)].Gris;
-            }
+                if (cc.etat == true) {
+                    String Color1 = joueur.Couleur;
+                    PionConsole pioncase = cc.pion;
+                    String Color2 = pioncase.couleur;
+                    if (Color1 != Color2) {
+                        break;
+                    }
+                }
+                else {
+                grille[a][b].Gris();
+                }
         }
     }
 }
