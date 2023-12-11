@@ -190,4 +190,10 @@ public class Plateau {
                 }
         }
     }
+    
+    public void DeplacerPion(PionConsole Pion,int X,int Y,Joueur Joueur2){
+        grille[X][Y].SuppPion();
+        Joueur2.PionsJ.remove(grille[X][Y].pion);
+        grille[X][Y].addPion(Pion.X,Pion.Y, Pion.couleur, Pion.roi);
+    }
 }
