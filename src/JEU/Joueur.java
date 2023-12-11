@@ -4,10 +4,20 @@
  */
 package JEU;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author redou
  */
 public class Joueur {
+    ArrayList<CarteConsole> MainJ;
+    ArrayList<PionConsole> PionsJ;
+    String Couleur;
+
+    public Joueur(String couleur) {
+        this.Couleur = couleur;
+    }
+    
     
 }

@@ -5,6 +5,7 @@
 package ONITAMA;
 
 import java.awt.GridLayout;
+import javax.swing.JButton;
 
 /**
  *
@@ -20,15 +21,13 @@ public class Jeu_Principale extends javax.swing.JFrame {
     }
     public Jeu_Principale() {
         initComponents();
-        int nbLignes = 5;
-        int nbColonnes = 5;
-        this.grille = new GrilleDeJeuO(nbLignes,nbColonnes);
-        PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200,nbColonnes*110, nbLignes*110));
+        this.grille = new GrilleDeJeuO(5,5);
+        PanneauGrille.setLayout(new GridLayout(5, 5));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200,5*110, 5*110));
             this.pack();
             this.revalidate();
-        for (int i=0; i < nbLignes; i++) {
-            for (int j=0; j < nbColonnes; j++ ) {
+        for (int i=0; i < 5; i++) {
+            for (int j=0; j < 5; j++ ) {
                 CelluleGraph bouton_cellule = new CelluleGraph(grille.matriceCellules[i][j], 110,110);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }

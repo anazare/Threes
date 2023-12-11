@@ -14,7 +14,7 @@ public class GrilleDeJeuO {
     int nbLignes;
     int nbColonnes;
     Carte carte;
-    Pawn pion;
+    Pawn pion= new Pawn("roi",1,1);
     int positionLigneCarte=pion.getLigne(pion); // modifier pour l'intituler pion 
     int positionColonneCarte=pion.getColonne(pion);
 

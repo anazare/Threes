@@ -10,10 +10,11 @@ package JEU;
  */
 public class CaseConsole {
     boolean etat;
-    Pion pion;
+    PionConsole pion = null;
+    boolean gris;
     
-    public CaseConsole(boolean etat) {
-        this.etat = etat;
+    public CaseConsole() {
+        this.etat = false;
     }
     
     public boolean VerifEtat(){
@@ -25,16 +26,29 @@ public class CaseConsole {
         }
     }
     
+    public void Gris(){
+        gris = true;
+    }
+    
     public void addPion(int X, int Y, String couleur,boolean roi){
         etat=true;
-        pion =  new Pion(X,Y,couleur,false);
+        pion =  new PionConsole(X,Y,couleur,false);
+    }
+    
+    public void SuppPion(){
+        etat=false;
+        pion = null;
     }
 
     @Override
     public String toString() {
         if (etat==true){
             return pion.toString();
-        } else {
+        }
+        if (gris == true){
+            return "G";
+        }
+        else {
             return "";
         }
     }

@@ -6,7 +6,6 @@ package JEU;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.*;
 
 /**
  *
@@ -51,7 +50,7 @@ public class Plateau {
     CarteConsole rooster = new CarteConsole("rooster",rooster1,rooster2,rooster3,rooster4);
     CarteConsole tiger = new CarteConsole("tiger",tiger1,tiger2,nulle,nulle);
 
-    public Plateau(int taille,  CaseConsole[][] grille) {
+    public Plateau(int taille) {
         this.taille = taille;
         grille = new CaseConsole[taille][taille];
         for (int i=0; i<taille;i++){
@@ -156,7 +155,7 @@ public class Plateau {
         for (int j=0; j<2; j++){
             for (int i=1; i<5; i++){
                 for (int x = 0; x < 2; x++) {
-                    Coord c = Carte.get(x);
+                    Coord c = Carte.deplacementAutorise.get(x);
                      int plus = Coordi.coordonnees.get(x) + c.coordonnees.get(x);
                      f.coordonnees.add(plus);
                 }
@@ -195,5 +194,23 @@ public class Plateau {
         grille[X][Y].SuppPion();
         Joueur2.PionsJ.remove(grille[X][Y].pion);
         grille[X][Y].addPion(Pion.X,Pion.Y, Pion.couleur, Pion.roi);
+    }
+    
+    public boolean Victoire(Joueur joueur){
+        if (joueur.PionsJ == null){
+            return true;
+        }
+        if (grille[5][3].pion == joueur.PionsJ.get(4)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    public void ActualiserMain(Joueur joueur,CarteConsole carte,int indice){
+        CarteConsole x = Main.get(3);
+        joueur.MainJ.set(indice,x);
+        Main.set(3,carte);
     }
 }

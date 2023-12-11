@@ -4,33 +4,19 @@
  */
 package JEU;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author redou
  */
 public class Pion {
-    boolean roi;
-    Coord coordPion;
-    String couleur;
+    PionConsole pion;
+    int l;
+    int L;
 
-    public Pion(int X, int Y, String couleur,boolean roi) {
-        this.coordPion = new Coord(X,Y);
-        this.couleur = couleur;
-    }
-    
-    public String getColor(){
-        return couleur;
-    }
-
-    @Override
-    public String toString() {
-        if (roi==true){
-            return "R";
-        } else {
-            return "P";
-        }
+    public Pion(PionConsole pion, int l, int L) {
+        this.pion = pion;
+        this.l = l;
+        this.L = L;
     }
     
     
