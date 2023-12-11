@@ -153,9 +153,9 @@ public class Plateau {
         Coord f = null;
         ArrayList<Coord> CoordPossibles = null;
         for (int j=0; j<2; j++){
-            for (int i=1; i<5; i++){
+            for (int i=0; i<4; i++){
                 for (int x = 0; x < 2; x++) {
-                    Coord c = Carte.deplacementAutorise.get(x);
+                     Coord c = Carte.deplacementAutorise.get(i);
                      int plus = Coordi.coordonnees.get(x) + c.coordonnees.get(x);
                      f.coordonnees.add(plus);
                 }
