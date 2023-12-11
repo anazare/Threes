@@ -68,49 +68,49 @@ public class Plateau {
             if (a==0){
                 Main.add(boat);
             }
-            if (a==0){
+            if (a==1){
                 Main.add(cobra);
             }
-            if (a==0){
+            if (a==2){
                 Main.add(crab);
             }
-            if (a==0){
+            if (a==3){
                 Main.add(crane);
             }
-            if (a==0){
+            if (a==4){
                 Main.add(dragon);
             }
-            if (a==0){
+            if (a==5){
                 Main.add(eel);
             }
-            if (a==0){
+            if (a==6){
                 Main.add(elephant);
             }
-            if (a==0){
+            if (a==7){
                 Main.add(frog);
             }
-            if (a==0){
+            if (a==8){
                 Main.add(goose);
             }
-            if (a==0){
+            if (a==9){
                 Main.add(horse);
             }
-            if (a==0){
+            if (a==10){
                 Main.add(mantis);
             }
-            if (a==0){
+            if (a==11){
                 Main.add(monkey);
             }
-            if (a==0){
+            if (a==12){
                 Main.add(ox);
             }
-            if (a==0){
+            if (a==13){
                 Main.add(rabbit);
             }
-            if (a==0){
+            if (a==14){
                 Main.add(rooster);
             }
-            if (a==0){
+            if (a==15){
                 Main.add(tiger);
             }
         }
@@ -136,12 +136,12 @@ public class Plateau {
         
          for (int j=0; j<taille;j++){
             if(j!=2){
-                grille[0][j].addPion(4,j,"red",false);
+                grille[4][j].addPion(4,j,"red",false);
                 PionConsole Pion = new PionConsole(0,j,"red",false);
                 j2.PionsJ.add(Pion);
             }
             else{
-                grille[0][j].addPion(4,j,"red",true);
+                grille[4][j].addPion(4,j,"red",true);
                 PionConsole Pion = new PionConsole(0,j,"red",true);
                 j2.PionsJ.add(Pion);
             }
@@ -173,7 +173,7 @@ public class Plateau {
                 CaseConsole cc = grille[a][b];
                 if (a > 5) {
                     if (b > 5) {
-                        break;
+                        break; //a cxhanger
                     }
                 }
                 if (cc.etat == true) {
@@ -197,7 +197,7 @@ public class Plateau {
     }
     
     public boolean Victoire(Joueur joueur){
-        if (joueur.PionsJ == null){
+        if (joueur.PionsJ == null){ //plus roi a changer
             return true;
         }
         if (grille[5][3].pion == joueur.PionsJ.get(4)){

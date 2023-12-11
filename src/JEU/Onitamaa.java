@@ -4,6 +4,8 @@
  */
 package JEU;
 
+import java.util.Arrays;
+
 /**
  *
  * @author redou
@@ -13,9 +15,9 @@ public class Onitamaa {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
         Plateau plateau = new Plateau(5);
-        plateau.initialiserPlateau();
         System.out.print(plateau.grille);
     }
     

@@ -11,13 +11,15 @@ import java.util.ArrayList;
  * @author redou
  */
 public class CarteConsole {
-    public String nom;
-    public Coord[] deplacementAutorise; 
+    String nom;
+    ArrayList<Coord> deplacementAutorise ; 
 
     public CarteConsole(String nom,Coord Coord1,Coord Coord2,Coord Coord3,Coord Coord4) {
         this.nom = nom;
-        Coord[] deplacementAutorise = {Coord1,Coord2,Coord3,Coord4};
-        this.deplacementAutorise = deplacementAutorise;
+        deplacementAutorise.add(Coord1);
+        deplacementAutorise.add(Coord2);
+        deplacementAutorise.add(Coord3);
+        deplacementAutorise.add(Coord4);
     }
 
     @Override
