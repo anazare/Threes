@@ -17,8 +17,7 @@ public class Onitamaa {
      */
     
     public static void main(String[] args) {
-        Plateau plateau = new Plateau(5);
-        System.out.print(plateau.grille);
+
     }
     
 }

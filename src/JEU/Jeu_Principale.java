@@ -2,33 +2,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ONITAMA;
+package JEU;
 
 import java.awt.GridLayout;
-import javax.swing.JButton;
+
 
 /**
  *
  * @author redou
  */
 public class Jeu_Principale extends javax.swing.JFrame {
-    GrilleDeJeuO grille;
+    Plateau plateau;
     /**
      * Creates new form Jeu_Principale
      */
-    public void initialiserPartie() {
-        grille.initialiserGrille();
-    }
+
     public Jeu_Principale() {
         initComponents();
-        this.grille = new GrilleDeJeuO(5,5);
+        this.plateau = new Plateau();
         PanneauGrille.setLayout(new GridLayout(5, 5));
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200,5*110, 5*110));
             this.pack();
             this.revalidate();
         for (int i=0; i < 5; i++) {
             for (int j=0; j < 5; j++ ) {
-                CelluleGraph bouton_cellule = new CelluleGraph(grille.matriceCellules[i][j], 110,110);
+                Case bouton_cellule = new Case(plateau.grille.grille[i][j], 110,110);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }
@@ -67,7 +65,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(2400, 890));
         setMinimumSize(new java.awt.Dimension(2400, 890));
         setPreferredSize(new java.awt.Dimension(2400, 890));
-        setSize(new java.awt.Dimension(2400, 890));
+        setSize(new java.awt.Dimension(900, 900));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanneauGrille.setBorder(javax.swing.BorderFactory.createTitledBorder(""));

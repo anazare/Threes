@@ -16,6 +16,7 @@ public class CarteConsole {
 
     public CarteConsole(String nom,Coord Coord1,Coord Coord2,Coord Coord3,Coord Coord4) {
         this.nom = nom;
+        this.deplacementAutorise = new ArrayList<Coord>();
         deplacementAutorise.add(Coord1);
         deplacementAutorise.add(Coord2);
         deplacementAutorise.add(Coord3);

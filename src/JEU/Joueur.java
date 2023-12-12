@@ -16,6 +16,8 @@ public class Joueur {
     String Couleur;
 
     public Joueur(String couleur) {
+        this.MainJ = new ArrayList<CarteConsole> ();
+        this.PionsJ = new ArrayList<PionConsole> ();
         this.Couleur = couleur;
     }
     

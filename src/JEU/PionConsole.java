@@ -9,15 +9,16 @@ package JEU;
  * @author redou
  */
 public class PionConsole {
-    boolean roi;
+    String roi;
     int X;
     int Y;
     String couleur;
 
-    public PionConsole(int X, int Y, String couleur,boolean roi) {
+    public PionConsole(int X, int Y, String couleur,String roi) {
         this.X = X;
         this.Y = Y;
         this.couleur = couleur;
+        this.roi = roi;
     }
     
     public String getColor(){
@@ -26,7 +27,7 @@ public class PionConsole {
 
     @Override
     public String toString() {
-        if (roi==true){
+        if (roi == "oui"){
             return "R";
         } else {
             return "P";

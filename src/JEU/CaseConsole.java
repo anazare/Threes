@@ -30,9 +30,9 @@ public class CaseConsole {
         gris = true;
     }
     
-    public void addPion(int X, int Y, String couleur,boolean roi){
+    public void addPion(int X, int Y, String couleur,String roi){
         etat=true;
-        pion =  new PionConsole(X,Y,couleur,false);
+        pion =  new PionConsole(X,Y,couleur,roi);
     }
     
     public void SuppPion(){
