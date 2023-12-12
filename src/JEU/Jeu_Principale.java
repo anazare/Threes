@@ -42,23 +42,11 @@ public class Jeu_Principale extends javax.swing.JFrame {
     private void initComponents() {
 
         PanneauGrille = new javax.swing.JPanel();
-        PanneauGrille5 = new javax.swing.JPanel();
-        PanneauGrille9 = new javax.swing.JPanel();
-        PanneauGrille10 = new javax.swing.JPanel();
-        PanneauGrille11 = new javax.swing.JPanel();
-        PanneauGrille12 = new javax.swing.JPanel();
-        PanneauGrille1 = new javax.swing.JPanel();
-        PanneauGrille2 = new javax.swing.JPanel();
-        PanneauGrille3 = new javax.swing.JPanel();
-        PanneauGrille4 = new javax.swing.JPanel();
-        PanneauGrille13 = new javax.swing.JPanel();
-        PanneauGrille14 = new javax.swing.JPanel();
-        PanneauGrille15 = new javax.swing.JPanel();
-        PanneauGrille16 = new javax.swing.JPanel();
-        PanneauGrille17 = new javax.swing.JPanel();
-        PanneauGrille18 = new javax.swing.JPanel();
-        PanneauGrille19 = new javax.swing.JPanel();
-        PanneauGrille20 = new javax.swing.JPanel();
+        Carte5 = new javax.swing.JButton();
+        Carte4 = new javax.swing.JButton();
+        Carte2 = new javax.swing.JButton();
+        Carte1 = new javax.swing.JButton();
+        Carte3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(-10, 0));
@@ -72,101 +60,50 @@ public class Jeu_Principale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 600, 600));
 
-        PanneauGrille5.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
-        PanneauGrille5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(PanneauGrille5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 280, 130));
+        Carte5.setText("jButton1");
+        Carte5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Carte5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Carte5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 420, 270, 100));
 
-        PanneauGrille9.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
-        PanneauGrille9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Carte4.setText("jButton1");
+        getContentPane().add(Carte4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 290, 270, 100));
 
-        PanneauGrille10.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille10.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PanneauGrille9.add(PanneauGrille10, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 280, 110));
+        Carte2.setText("jButton1");
+        Carte2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Carte2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Carte2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 270, 100));
 
-        PanneauGrille11.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille11.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Carte1.setText("jButton1");
+        Carte1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Carte1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Carte1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 270, 100));
 
-        PanneauGrille12.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille12.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PanneauGrille11.add(PanneauGrille12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 280, 110));
-
-        PanneauGrille9.add(PanneauGrille11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 280, 130));
-
-        getContentPane().add(PanneauGrille9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, 280, 130));
-
-        PanneauGrille1.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
-        PanneauGrille1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        PanneauGrille2.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PanneauGrille1.add(PanneauGrille2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 280, 110));
-
-        PanneauGrille3.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        PanneauGrille4.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PanneauGrille3.add(PanneauGrille4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 280, 110));
-
-        PanneauGrille1.add(PanneauGrille3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 280, 130));
-
-        getContentPane().add(PanneauGrille1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 280, 130));
-
-        PanneauGrille13.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
-        PanneauGrille13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        PanneauGrille14.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille14.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PanneauGrille13.add(PanneauGrille14, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 280, 110));
-
-        PanneauGrille15.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille15.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        PanneauGrille16.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille16.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PanneauGrille15.add(PanneauGrille16, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 280, 110));
-
-        PanneauGrille13.add(PanneauGrille15, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 280, 130));
-
-        getContentPane().add(PanneauGrille13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 490, 280, 130));
-
-        PanneauGrille17.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
-        PanneauGrille17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        PanneauGrille18.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille18.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PanneauGrille17.add(PanneauGrille18, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 280, 110));
-
-        PanneauGrille19.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille19.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        PanneauGrille20.setBackground(new java.awt.Color(102, 102, 102));
-        PanneauGrille20.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PanneauGrille19.add(PanneauGrille20, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 280, 110));
-
-        PanneauGrille17.add(PanneauGrille19, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 280, 130));
-
-        getContentPane().add(PanneauGrille17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 280, 280, 130));
+        Carte3.setText("jButton1");
+        getContentPane().add(Carte3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 270, 100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Carte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Carte1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Carte1ActionPerformed
+
+    private void Carte2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Carte2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Carte2ActionPerformed
+
+    private void Carte5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Carte5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Carte5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,23 +141,11 @@ public class Jeu_Principale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Carte1;
+    private javax.swing.JButton Carte2;
+    private javax.swing.JButton Carte3;
+    private javax.swing.JButton Carte4;
+    private javax.swing.JButton Carte5;
     private javax.swing.JPanel PanneauGrille;
-    private javax.swing.JPanel PanneauGrille1;
-    private javax.swing.JPanel PanneauGrille10;
-    private javax.swing.JPanel PanneauGrille11;
-    private javax.swing.JPanel PanneauGrille12;
-    private javax.swing.JPanel PanneauGrille13;
-    private javax.swing.JPanel PanneauGrille14;
-    private javax.swing.JPanel PanneauGrille15;
-    private javax.swing.JPanel PanneauGrille16;
-    private javax.swing.JPanel PanneauGrille17;
-    private javax.swing.JPanel PanneauGrille18;
-    private javax.swing.JPanel PanneauGrille19;
-    private javax.swing.JPanel PanneauGrille2;
-    private javax.swing.JPanel PanneauGrille20;
-    private javax.swing.JPanel PanneauGrille3;
-    private javax.swing.JPanel PanneauGrille4;
-    private javax.swing.JPanel PanneauGrille5;
-    private javax.swing.JPanel PanneauGrille9;
     // End of variables declaration//GEN-END:variables
 }
