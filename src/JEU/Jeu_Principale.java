@@ -7,6 +7,7 @@ package JEU;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 
 /**
@@ -16,6 +17,10 @@ import java.awt.event.ActionListener;
 public class Jeu_Principale extends javax.swing.JFrame {
     Plateau plateau;
     Carte CarteSelectionne;
+    Pion PionSelectionne;
+    Joueur joueur;
+    int tour;
+    
     /**
      * Creates new form Jeu_Principale
      */
@@ -24,6 +29,9 @@ public class Jeu_Principale extends javax.swing.JFrame {
         initComponents();
         this.plateau = new Plateau();
         this.CarteSelectionne=null;
+        this.PionSelectionne=null;
+        this.joueur=null;
+        this.tour=0;
         PanneauGrille.setLayout(new GridLayout(5, 5));
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200,5*110, 5*110));
             this.pack();
@@ -32,6 +40,21 @@ public class Jeu_Principale extends javax.swing.JFrame {
             for (int j=0; j < 5; j++ ) {
                 Case bouton_cellule = new Case(plateau.grille.grille[i][j], 110,110);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+                
+                ActionListener ecouteurClick = new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (bouton_cellule.CaseAssociee.etat==true){
+                            Coord coordpion = new Coord(bouton_cellule.CaseAssociee.pion.X,bouton_cellule.CaseAssociee.pion.Y);
+                            ArrayList<Coord> CoordPossibles= plateau.CoordPossible(coordpion, CarteSelectionne.CarteAssociee);
+                            plateau.VerifCoordPossible(joueur, CoordPossibles);
+                        }
+                        else {
+                            plateau.DeplacerPion(bouton_cellule.CaseAssociee.pion, tour, tour, joueur);
+                        }
+                    } // ajouter des JButton pour pion pour pouvoir separer les actions des pions et des cases 
+                };
+                
             }
         }
         
