@@ -5,6 +5,8 @@
 package JEU;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -13,7 +15,7 @@ import java.awt.GridLayout;
  */
 public class Jeu_Principale extends javax.swing.JFrame {
     Plateau plateau;
-    Carte Cartesélectionne;
+    Carte CarteSelectionne;
     /**
      * Creates new form Jeu_Principale
      */
@@ -21,6 +23,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
     public Jeu_Principale() {
         initComponents();
         this.plateau = new Plateau();
+        this.CarteSelectionne=null;
         PanneauGrille.setLayout(new GridLayout(5, 5));
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200,5*110, 5*110));
             this.pack();
@@ -46,6 +49,13 @@ public class Jeu_Principale extends javax.swing.JFrame {
             for (int j=0; j < 2; j++ ) {
                 Carte carte1 = new Carte(plateau.j1.MainJ.get(j), 170,30);
                 PanneauCarteJ1.add(carte1); // ajout au Jpanel PanneauGrille
+                
+                ActionListener ecouteurClick = new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        CarteSelectionne = carte1;
+                    }
+                };
             }
         
         PanneauCarteJ2.setLayout(new GridLayout(2, 1));
@@ -55,6 +65,13 @@ public class Jeu_Principale extends javax.swing.JFrame {
             for (int j=0; j < 2; j++ ) {
                 Carte carte2 = new Carte(plateau.j2.MainJ.get(j), 170,30);
                 PanneauCarteJ2.add(carte2); // ajout au Jpanel PanneauGrille
+                
+                ActionListener ecouteurClick = new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        CarteSelectionne = carte2;
+                    }
+                };
             }
             
     }
