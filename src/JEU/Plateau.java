@@ -64,52 +64,82 @@ public class Plateau {
         while (Main.size()<5){
             int a = r.nextInt(15);
             if (a==0){
-                Main.add(boat);
+                if (!Main.contains(boat)){
+                    Main.add(boat);
+                } 
             }
             if (a==1){
-                Main.add(cobra);
+                if (!Main.contains(cobra)){
+                    Main.add(cobra);
+                }
             }
             if (a==2){
-                Main.add(crab);
+                if (!Main.contains(crab)){
+                    Main.add(crab);
+                }
             }
             if (a==3){
-                Main.add(crane);
+                if (!Main.contains(crane)){
+                    Main.add(crane);
+                }
             }
             if (a==4){
-                Main.add(dragon);
+                if (!Main.contains(dragon)){
+                    Main.add(dragon);
+                }
             }
             if (a==5){
-                Main.add(eel);
+                if (!Main.contains(eel)){
+                    Main.add(eel);
+                }
             }
             if (a==6){
-                Main.add(elephant);
+                if (!Main.contains(elephant)){
+                    Main.add(elephant);
+                }
             }
             if (a==7){
-                Main.add(frog);
+                if (!Main.contains(frog)){
+                    Main.add(frog);
+                }
             }
             if (a==8){
-                Main.add(goose);
+                if (!Main.contains(goose)){
+                    Main.add(goose);
+                }
             }
             if (a==9){
-                Main.add(horse);
+                if (!Main.contains(horse)){
+                    Main.add(horse);
+                }
             }
             if (a==10){
-                Main.add(mantis);
+                if (!Main.contains(mantis)){
+                    Main.add(mantis);
+                }
             }
             if (a==11){
-                Main.add(monkey);
+                if (!Main.contains(monkey)){
+                    Main.add(monkey);
+                }
             }
             if (a==12){
-                Main.add(ox);
+                if (!Main.contains(ox)){
+                    Main.add(ox);
+                }
             }
             if (a==13){
-                Main.add(rabbit);
+                if (!Main.contains(rabbit)){
+                    Main.add(rabbit);
+                }
             }
             if (a==14){
-                Main.add(rooster);
+                if (!Main.contains(rooster)){
+                Main.add(rooster);}
             }
             if (a==15){
-                Main.add(tiger);
+                if (!Main.contains(tiger)){
+                Main.add(tiger);}
             }
         }
         j1.MainJ.add(Main.get(0));
