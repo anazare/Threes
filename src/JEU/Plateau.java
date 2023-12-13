@@ -55,7 +55,7 @@ public class Plateau {
         this.j2 = new Joueur("red");
         this.Main = new ArrayList<CarteConsole>();
         this.grille = new Grille(taille);
-        initialiserPlateau();
+        initialiserPion();
         creerMain();
     }
 
@@ -148,16 +148,16 @@ public class Plateau {
         j2.MainJ.add(Main.get(4));
     }
     
-    public void initialiserPlateau(){
+    public void initialiserPion(){
         for (int j=0; j<taille;j++){
             if(j!=2){
                 grille.grille[j][0].addPion(0,j,"blue","non");
-                PionConsole Pion1 = new PionConsole(0,j,"blue","non");
+                Pion Pion1 = new Pion(new PionConsole(0,j,"blue","non"),30,30);
                 j1.PionsJ.add(Pion1);
             }
             else{
                 grille.grille[j][0].addPion(0,j,"blue","oui");
-                PionConsole Roi1 = new PionConsole(0,j,"blue","oui");
+                Pion Roi1 = new Pion(new PionConsole(0,j,"blue","oui"),30,30);
                 j1.PionsJ.add(Roi1);
             }
         }
@@ -165,12 +165,12 @@ public class Plateau {
          for (int j=0; j<taille;j++){
             if(j!=2){
                 grille.grille[j][4].addPion(4,j,"red","non");
-                PionConsole Pion2 = new PionConsole(0,j,"red","non");
+                Pion Pion2 = new Pion(new PionConsole(0,j,"red","non"),10,10);
                 j2.PionsJ.add(Pion2);
             }
             else{
                 grille.grille[j][4].addPion(4,j,"red","oui");
-                PionConsole Roi2 = new PionConsole(0,j,"red","oui");
+                Pion Roi2 = new Pion(new PionConsole(0,j,"red","oui"),10,10);
                 j2.PionsJ.add(Roi2);
             }
         }
@@ -205,8 +205,8 @@ public class Plateau {
                 }
                 if (cc.etat == true) {
                     String Color1 = joueur.Couleur;
-                    PionConsole pioncase = cc.pion;
-                    String Color2 = pioncase.couleur;
+                    Pion pioncase = cc.pion;
+                    String Color2 = pioncase.pion.couleur;
                     if (Color1 != Color2) {
                     }
                 }
@@ -216,10 +216,11 @@ public class Plateau {
         }
     }
     
-    public void DeplacerPion(PionConsole Pion,int X,int Y,Joueur Joueur2){
+    public void DeplacerPion(Pion Pion,int X,int Y,Joueur Joueur2){
         grille.grille[X][Y].SuppPion();
+        PionConsole pion = Pion.pion;
         Joueur2.PionsJ.remove(grille.grille[X][Y].pion);
-        grille.grille[X][Y].addPion(Pion.X,Pion.Y, Pion.couleur, Pion.roi);
+        grille.grille[X][Y].addPion(Pion.pion.X,Pion.pion.Y, Pion.pion.couleur, Pion.pion.roi);
     }
     
     public boolean Victoire(Joueur joueur){

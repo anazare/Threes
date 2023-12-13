@@ -10,7 +10,7 @@ package JEU;
  */
 public class CaseConsole {
     boolean etat;
-    PionConsole pion = null;
+    Pion pion = null;
     boolean gris;
     
     public CaseConsole() {
@@ -32,7 +32,8 @@ public class CaseConsole {
     
     public void addPion(int X, int Y, String couleur,String roi){
         etat=true;
-        pion =  new PionConsole(X,Y,couleur,roi);
+        PionConsole pioncons = new PionConsole(X,Y,couleur,roi);
+        pion =  new Pion(pioncons,30,30);
     }
     
     public void SuppPion(){

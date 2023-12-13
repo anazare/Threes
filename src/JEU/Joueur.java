@@ -12,12 +12,12 @@ import java.util.ArrayList;
  */
 public class Joueur {
     ArrayList<CarteConsole> MainJ;
-    ArrayList<PionConsole> PionsJ;
+    ArrayList<Pion> PionsJ;
     String Couleur;
 
     public Joueur(String couleur) {
         this.MainJ = new ArrayList<CarteConsole> ();
-        this.PionsJ = new ArrayList<PionConsole> ();
+        this.PionsJ = new ArrayList<Pion> ();
         this.Couleur = couleur;
     }
     
