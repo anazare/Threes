@@ -193,7 +193,7 @@ public class Plateau {
     }
     
     public boolean Victoire(Joueur joueur){
-        if (joueur.PionsJ.get(2) == null){ //plus roi a changer
+        if (joueur.PionsJ.get(2) == null){ 
             return true;
         }
         if (grille.grille[5][3].pion == joueur.PionsJ.get(4)){

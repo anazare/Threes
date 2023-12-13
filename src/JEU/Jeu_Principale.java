@@ -42,11 +42,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
     private void initComponents() {
 
         PanneauGrille = new javax.swing.JPanel();
-        Carte5 = new javax.swing.JButton();
-        Carte4 = new javax.swing.JButton();
-        Carte2 = new javax.swing.JButton();
-        Carte1 = new javax.swing.JButton();
-        Carte3 = new javax.swing.JButton();
+        PanneauCarte = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(-10, 0));
@@ -60,50 +56,12 @@ public class Jeu_Principale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 600, 600));
 
-        Carte5.setText("jButton1");
-        Carte5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Carte5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Carte5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 420, 270, 100));
-
-        Carte4.setText("jButton1");
-        getContentPane().add(Carte4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 290, 270, 100));
-
-        Carte2.setText("jButton1");
-        Carte2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Carte2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Carte2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 270, 100));
-
-        Carte1.setText("jButton1");
-        Carte1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Carte1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Carte1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 270, 100));
-
-        Carte3.setText("jButton1");
-        getContentPane().add(Carte3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 270, 100));
+        PanneauCarte.setBackground(new java.awt.Color(255, 255, 255));
+        PanneauCarte.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(PanneauCarte, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 280, 120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Carte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Carte1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Carte1ActionPerformed
-
-    private void Carte2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Carte2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Carte2ActionPerformed
-
-    private void Carte5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Carte5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Carte5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,11 +99,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Carte1;
-    private javax.swing.JButton Carte2;
-    private javax.swing.JButton Carte3;
-    private javax.swing.JButton Carte4;
-    private javax.swing.JButton Carte5;
+    private javax.swing.JPanel PanneauCarte;
     private javax.swing.JPanel PanneauGrille;
     // End of variables declaration//GEN-END:variables
 }
