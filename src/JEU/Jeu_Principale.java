@@ -13,6 +13,7 @@ import java.awt.GridLayout;
  */
 public class Jeu_Principale extends javax.swing.JFrame {
     Plateau plateau;
+    Carte Cartesélectionne;
     /**
      * Creates new form Jeu_Principale
      */
@@ -30,6 +31,32 @@ public class Jeu_Principale extends javax.swing.JFrame {
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }
+        
+        Defausse.setLayout(new GridLayout(1, 1));
+        getContentPane().add(Defausse, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10,300, 175));
+            this.pack();
+            this.revalidate();
+            Carte carte = new Carte(plateau.Main.get(2), 170,30);
+            Defausse.add(carte);
+        
+            PanneauCarteJ1.setLayout(new GridLayout(2, 1));
+        getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280,300, 350));
+            this.pack();
+            this.revalidate();
+            for (int j=0; j < 2; j++ ) {
+                Carte carte1 = new Carte(plateau.j1.MainJ.get(j), 170,30);
+                PanneauCarteJ1.add(carte1); // ajout au Jpanel PanneauGrille
+            }
+        
+        PanneauCarteJ2.setLayout(new GridLayout(2, 1));
+        getContentPane().add(PanneauCarteJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 280,300, 350));
+            this.pack();
+            this.revalidate();
+            for (int j=0; j < 2; j++ ) {
+                Carte carte2 = new Carte(plateau.j2.MainJ.get(j), 170,30);
+                PanneauCarteJ2.add(carte2); // ajout au Jpanel PanneauGrille
+            }
+            
     }
 
     /**
@@ -42,7 +69,9 @@ public class Jeu_Principale extends javax.swing.JFrame {
     private void initComponents() {
 
         PanneauGrille = new javax.swing.JPanel();
-        PanneauCarte = new javax.swing.JPanel();
+        Defausse = new javax.swing.JPanel();
+        PanneauCarteJ1 = new javax.swing.JPanel();
+        PanneauCarteJ2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(-10, 0));
@@ -56,9 +85,14 @@ public class Jeu_Principale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 600, 600));
 
-        PanneauCarte.setBackground(new java.awt.Color(255, 255, 255));
-        PanneauCarte.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(PanneauCarte, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 280, 120));
+        Defausse.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(Defausse, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 340, 420));
+
+        PanneauCarteJ1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 340, 120));
+
+        PanneauCarteJ2.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(PanneauCarteJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 270, 340, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -99,7 +133,9 @@ public class Jeu_Principale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanneauCarte;
+    private javax.swing.JPanel Defausse;
+    private javax.swing.JPanel PanneauCarteJ1;
+    private javax.swing.JPanel PanneauCarteJ2;
     private javax.swing.JPanel PanneauGrille;
     // End of variables declaration//GEN-END:variables
 }
