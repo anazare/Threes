@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 
 
 /**
@@ -16,9 +18,11 @@ import java.util.ArrayList;
  */
 public class Jeu_Principale extends javax.swing.JFrame {
     Plateau plateau;
-    Carte CarteSelectionne;
-    Pion PionSelectionne;
+    CarteConsole CarteSelectionne;
+    PionConsole PionSelectionne;
+    PionConsole CaseSelectionne;
     Joueur joueur;
+    Joueur adversaire;
     int tour;
     
     /**
@@ -28,9 +32,11 @@ public class Jeu_Principale extends javax.swing.JFrame {
     public Jeu_Principale() {
         initComponents();
         this.plateau = new Plateau();
-        this.CarteSelectionne=null;
+        this.CarteSelectionne=plateau.boar;
         this.PionSelectionne=null;
-        this.joueur=null;
+        this.CaseSelectionne=null;
+        this.joueur = plateau.j1;
+        this.adversaire=plateau.j2;
         this.tour=0;
         PanneauGrille.setLayout(new GridLayout(5, 5));
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200,5*110, 5*110));
@@ -38,26 +44,30 @@ public class Jeu_Principale extends javax.swing.JFrame {
             this.revalidate();
         for (int i=0; i < 5; i++) {
             for (int j=0; j < 5; j++ ) {
-                Case bouton_cellule = new Case(plateau.grille.grille[i][j], 110,110);
+                Pion bouton_cellule = new Pion(plateau.grille.grille[i][j], 110,110);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
-                
-                ActionListener ecouteurClick = new ActionListener() {
+                ActionListener Pion = new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if (bouton_cellule.CaseAssociee.etat==true){
-                            Coord coordpion = new Coord(bouton_cellule.CaseAssociee.pion.X,bouton_cellule.CaseAssociee.pion.Y);
-                            ArrayList<Coord> CoordPossibles= plateau.CoordPossible(coordpion, CarteSelectionne.CarteAssociee);
+                        if (bouton_cellule.pion.etat=true){
+                            Coord coordpion = new Coord(bouton_cellule.pion.X,bouton_cellule.pion.Y);
+                            ArrayList<Coord> CoordPossibles= plateau.CoordPossible(coordpion, CarteSelectionne);
                             plateau.VerifCoordPossible(joueur, CoordPossibles);
+                            PionSelectionne = bouton_cellule.pion;
                         }
-                        else {
-                            plateau.DeplacerPion(bouton_cellule.CaseAssociee.pion, tour, tour, joueur);
+                        else{  
+                            CaseSelectionne = bouton_cellule.pion;
+                            plateau.DeplacerPion(PionSelectionne,CaseSelectionne.X,CaseSelectionne.Y,adversaire);
                         }
+
+                            
+                           
                     } // ajouter des JButton pour pion pour pouvoir separer les actions des pions et des cases 
                 };
-                
+                bouton_cellule.addActionListener(Pion);
             }
         }
-        
+        plateau.initialiserPion();
         Defausse.setLayout(new GridLayout(1, 1));
         getContentPane().add(Defausse, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10,300, 175));
             this.pack();
@@ -69,35 +79,36 @@ public class Jeu_Principale extends javax.swing.JFrame {
         getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280,300, 350));
             this.pack();
             this.revalidate();
-            for (int j=0; j < 2; j++ ) {
-                Carte carte1 = new Carte(plateau.j1.MainJ.get(j), 170,30);
-                PanneauCarteJ1.add(carte1); // ajout au Jpanel PanneauGrille
-                
-                ActionListener ecouteurClick = new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        CarteSelectionne = carte1;
-                    }
-                };
-            }
+            Carte carte1 = new Carte(plateau.j1.MainJ.get(0), 170,30);
+            PanneauCarteJ1.add(carte1); // ajout au Jpanel PanneauGrille
+            Carte carte2 = new Carte(plateau.j1.MainJ.get(1), 170,30);
+            PanneauCarteJ1.add(carte2); // ajout au Jpanel PanneauGrille
         
         PanneauCarteJ2.setLayout(new GridLayout(2, 1));
         getContentPane().add(PanneauCarteJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 280,300, 350));
             this.pack();
             this.revalidate();
-            for (int j=0; j < 2; j++ ) {
-                Carte carte2 = new Carte(plateau.j2.MainJ.get(j), 170,30);
-                PanneauCarteJ2.add(carte2); // ajout au Jpanel PanneauGrille
-                
-                ActionListener ecouteurClick = new ActionListener() {
+            Carte carte4 = new Carte(plateau.j2.MainJ.get(0), 170,30);
+            PanneauCarteJ2.add(carte4); // ajout au Jpanel PanneauGrille
+            Carte carte5 = new Carte(plateau.j2.MainJ.get(1), 170,30);
+            PanneauCarteJ2.add(carte5); // ajout au Jpanel PanneauGrille
+            ActionListener Carte1 = new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        CarteSelectionne = carte2;
+//                        CarteSelectionne = carte4;
                     }
-                };
-            }
-            
+            };
+            carte4.addActionListener(Carte1);
+//        While (plateau.Victoire(joueur)==0){
+//             if (tour==1){
+//                 
+//                 joueur = plateau.j1;
+//                 
+//             }
+//        }
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,6 +119,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         PanneauGrille = new javax.swing.JPanel();
         Defausse = new javax.swing.JPanel();
         PanneauCarteJ1 = new javax.swing.JPanel();
@@ -122,7 +134,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanneauGrille.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        PanneauGrille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanneauGrille.setLayout(new java.awt.BorderLayout());
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 600, 600));
 
         Defausse.setForeground(new java.awt.Color(255, 255, 255));
@@ -177,5 +189,6 @@ public class Jeu_Principale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauCarteJ1;
     private javax.swing.JPanel PanneauCarteJ2;
     private javax.swing.JPanel PanneauGrille;
+    private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 }
