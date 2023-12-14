@@ -8,8 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JDialog;
+
 
 
 /**
@@ -23,6 +22,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
     PionConsole CaseSelectionne;
     Joueur joueur;
     Joueur adversaire;
+    ArrayList<Pion> Pions;
     int tour;
     
     /**
@@ -33,10 +33,11 @@ public class Jeu_Principale extends javax.swing.JFrame {
         initComponents();
         this.plateau = new Plateau();
         this.CarteSelectionne=plateau.boar;
-        this.PionSelectionne=null;
+        this.PionSelectionne= null;
         this.CaseSelectionne=null;
         this.joueur = plateau.j1;
         this.adversaire=plateau.j2;
+        this.Pions = new ArrayList<Pion>();
         this.tour=0;
         PanneauGrille.setLayout(new GridLayout(5, 5));
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200,5*110, 5*110));
@@ -45,29 +46,85 @@ public class Jeu_Principale extends javax.swing.JFrame {
         for (int i=0; i < 5; i++) {
             for (int j=0; j < 5; j++ ) {
                 Pion bouton_cellule = new Pion(plateau.grille.grille[i][j], 110,110);
+                Pions.add(bouton_cellule);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
-                ActionListener Pion = new ActionListener() {
+                                ActionListener MettrePion = new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) { 
+                          bouton_cellule.pion.etat=true;
+                          for (int i=0;i<25;i++){
+                                    Pions.get(i).removeActionListener(this);
+                            }
+                    }
+                        
+                    };
+                ActionListener SelectPion = new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if (bouton_cellule.pion.etat=true){
+                          bouton_cellule.pion.etat=false;
+//                        "Voir comment deplacer pion en ajoutant un action listener et en enlevant l'ancien"
                             Coord coordpion = new Coord(bouton_cellule.pion.X,bouton_cellule.pion.Y);
-                            ArrayList<Coord> CoordPossibles= plateau.CoordPossible(coordpion, CarteSelectionne);
+                            ArrayList<Coord> CoordPossibles = plateau.CoordPossible(coordpion, CarteSelectionne);
                             plateau.VerifCoordPossible(joueur, CoordPossibles);
                             PionSelectionne = bouton_cellule.pion;
-                        }
-                        else{  
-                            CaseSelectionne = bouton_cellule.pion;
-                            plateau.DeplacerPion(PionSelectionne,CaseSelectionne.X,CaseSelectionne.Y,adversaire);
-                        }
-
-                            
-                           
+//                          pour tous les boutons on ajoute lautrre action et on enleve celle la
+                            for (int i=0;i<25;i++){
+                                if (Pions.get(i).pion.etat==false){
+                                    Pions.get(i).removeActionListener(this);
+                                    Pions.get(i).addActionListener(MettrePion);
+                                }
+                            }
                     } // ajouter des JButton pour pion pour pouvoir separer les actions des pions et des cases 
                 };
-                bouton_cellule.addActionListener(Pion);
+                bouton_cellule.addActionListener(SelectPion);
             }
         }
         plateau.initialiserPion();
+//        for (int j = 0; j < 5; j++) {
+//            if (j != 2) {
+//                plateau.grille.grille[j][0].addPion(0, j, "blue", "non");
+//                Pion Pion1 = new Pion(new PionConsole(0, j, "blue", "non", true),110,110);
+//                plateau.j1.PionsJ.add(Pion1.pion);
+//                  ActionListener Pions1 = new ActionListener() {
+//                    @Override
+//                    public void actionPerformed(ActionEvent e) {
+//                            Coord coordpion = new Coord(Pion1.pion.X,Pion1.pion.Y);
+//                            ArrayList<Coord> CoordPossibles = plateau.CoordPossible(coordpion, CarteSelectionne);
+//                            plateau.VerifCoordPossible(joueur, CoordPossibles);
+//                            PionSelectionne = Pion1.pion;      
+//                    } // ajouter des JButton pour pion pour pouvoir separer les actions des pions et des cases 
+//                  };
+//                  Pion1.addActionListener(Pions1);
+//                  
+//
+//            } else {
+//                plateau.grille.grille[j][0].addPion(0, j, "blue", "oui");
+//                Pion Roi1 = new Pion(new PionConsole(0, j, "blue", "oui", true),110,110);
+//                plateau.j1.PionsJ.add(Roi1.pion);
+//                ActionListener Rois1 = new ActionListener() {
+//                    @Override
+//                    public void actionPerformed(ActionEvent e) {
+//                            Coord coordpion = new Coord(Roi1.pion.X,Roi1.pion.Y);
+//                            ArrayList<Coord> CoordPossibles = plateau.CoordPossible(coordpion, CarteSelectionne);
+//                            plateau.VerifCoordPossible(joueur, CoordPossibles);
+//                            PionSelectionne = Roi1.pion;      
+//                    } // ajouter des JButton pour pion pour pouvoir separer les actions des pions et des cases 
+//                  };
+//                  Roi1.addActionListener(Rois1);
+//                  
+//            }
+//        }
+//        for (int j = 0; j < 5; j++) {
+//            if (j != 2) {
+//                plateau.grille.grille[j][4].addPion(4, j, "red", "non");
+//                PionConsole Pion2 = new PionConsole(0, j, "red", "non", true);
+//                plateau.j2.PionsJ.add(Pion2);
+//            } else {
+//                plateau.grille.grille[j][4].addPion(4, j, "red", "oui");
+//                PionConsole Roi2 = new PionConsole(0, j, "red", "oui", true);
+//                plateau.j2.PionsJ.add(Roi2);
+//            }
+//        }
         Defausse.setLayout(new GridLayout(1, 1));
         getContentPane().add(Defausse, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10,300, 175));
             this.pack();
@@ -137,12 +194,15 @@ public class Jeu_Principale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new java.awt.BorderLayout());
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 600, 600));
 
+        Defausse.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Defausse.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(Defausse, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 340, 420));
 
+        PanneauCarteJ1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanneauCarteJ1.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 340, 120));
 
+        PanneauCarteJ2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanneauCarteJ2.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(PanneauCarteJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 270, 340, 420));
 
