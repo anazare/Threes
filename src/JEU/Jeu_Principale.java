@@ -46,37 +46,30 @@ public class Jeu_Principale extends javax.swing.JFrame {
         for (int i=0; i < 5; i++) {
             for (int j=0; j < 5; j++ ) {
                 Pion bouton_cellule = new Pion(plateau.grille.grille[i][j], 110,110);
+                this.PionSelectionne = bouton_cellule.pion;
                 Pions.add(bouton_cellule);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
-                                ActionListener MettrePion = new ActionListener() {
+//                                        plateau.DeplacerPion(plateau.grille.grille[2][0],2,2);
+                    ActionListener MettrePion = new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) { 
-                          bouton_cellule.pion.etat=true;
-                          for (int i=0;i<25;i++){
-                                    Pions.get(i).removeActionListener(this);
-                            }
+                         plateau.grille.grille[2][2] = bouton_cellule.pion;
+                          plateau.DeplacerPion(plateau.grille.grille[2][0],2,2);
+                          plateau.EnleverPion(bouton_cellule.pion);
+                            bouton_cellule.removeActionListener(this);
                     }
-                        
                     };
-                ActionListener SelectPion = new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                          bouton_cellule.pion.etat=false;
-//                        "Voir comment deplacer pion en ajoutant un action listener et en enlevant l'ancien"
-                            Coord coordpion = new Coord(bouton_cellule.pion.X,bouton_cellule.pion.Y);
-                            ArrayList<Coord> CoordPossibles = plateau.CoordPossible(coordpion, CarteSelectionne);
-                            plateau.VerifCoordPossible(joueur, CoordPossibles);
-                            PionSelectionne = bouton_cellule.pion;
-//                          pour tous les boutons on ajoute lautrre action et on enleve celle la
-                            for (int i=0;i<25;i++){
-                                if (Pions.get(i).pion.etat==false){
-                                    Pions.get(i).removeActionListener(this);
-                                    Pions.get(i).addActionListener(MettrePion);
-                                }
-                            }
-                    } // ajouter des JButton pour pion pour pouvoir separer les actions des pions et des cases 
-                };
-                bouton_cellule.addActionListener(SelectPion);
+                    bouton_cellule.addActionListener(MettrePion);
+//                }
+//                else{
+//                ActionListener SelectPion = new ActionListener() {
+//                    @Override
+//                    public void actionPerformed(ActionEvent e) {
+//                          plateau.DeplacerPion(PionSelectionne,2,2);
+//                    } // ajouter des JButton pour pion pour pouvoir separer les actions des pions et des cases 
+//                };
+//                bouton_cellule.addActionListener(SelectPion);
+//                }
             }
         }
         plateau.initialiserPion();
@@ -164,6 +157,10 @@ public class Jeu_Principale extends javax.swing.JFrame {
 //             }
 //        }
     }
+    public void Move(PionConsole Pion,int X,int Y){
+            plateau.DeplacerPion(Pion, X, Y);
+            plateau.EnleverPion(Pion);
+        }
     
     
 
