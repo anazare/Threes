@@ -11,12 +11,13 @@ import java.util.Random;
  *
  * @author redou
  */
-public class Plateau {
+public final class Plateau {
     Grille grille;
     int taille = 5;
     Joueur j1 ;
     Joueur j2 ;
     ArrayList<CarteConsole> Main;
+    ArrayList<Coord> CoordPossible;
     Coord boar1 =new Coord(0,1),boar2=new Coord(-1,0),boar3 = new Coord(0,-1);
     Coord cobra1 = new Coord(0,-1),cobra2 =new Coord(1,-1),cobra3=new Coord(1,1);
     Coord crab1 = new Coord(-2,0),crab2 =new Coord(2,0),crab3=new Coord(0,-1);
@@ -33,7 +34,7 @@ public class Plateau {
     Coord rabbit1 = new Coord(1,-1),rabbit2 =new Coord(0,2),rabbit3=new Coord(-1,1);
     Coord rooster1 = new Coord(1,-1),rooster2 =new Coord(-1,1),rooster3=new Coord(0,1),rooster4 = new Coord(0,-1);
     Coord tiger1 = new Coord(-2,0),tiger2 =new Coord(1,0); 
-    CarteConsole boat = new CarteConsole("boar",boar1,boar2,boar3,null);
+    CarteConsole boar = new CarteConsole("boar",boar1,boar2,boar3,null);
     CarteConsole cobra = new CarteConsole("cobra",cobra1,cobra2,cobra3,null);
     CarteConsole crab = new CarteConsole("crab",crab1,crab2,crab3,null);
     CarteConsole crane = new CarteConsole("crane",crane1,crane2,crane3,null);
@@ -53,19 +54,22 @@ public class Plateau {
     public Plateau() {
         this.j1 = new Joueur("blue");
         this.j2 = new Joueur("red");
-        this.Main = new ArrayList<CarteConsole>();
+        this.Main = new ArrayList<>();
         this.grille = new Grille(taille);
         initialiserPion();
         creerMain();
     }
 
+    /**
+     *Fonction qui créé la Main des deux joueurs
+     */
     public void creerMain(){ 
         Random r = new Random();
         while (Main.size()<5){
             int a = r.nextInt(15);
             if (a==0){
-                if (!Main.contains(boat)){
-                    Main.add(boat);
+                if (!Main.contains(boar)){
+                    Main.add(boar);
                 } 
             }
             if (a==1){
@@ -154,30 +158,23 @@ public class Plateau {
                 grille.grille[j][0].addPion(0,j,"blue","non");
                 Pion Pion1 = new Pion(new PionConsole(0,j,"blue","non"),30,30);
                 j1.PionsJ.add(Pion1);
-            }
-            else{
-                grille.grille[j][0].addPion(0,j,"blue","oui");
-                Pion Roi1 = new Pion(new PionConsole(0,j,"blue","oui"),30,30);
-                j1.PionsJ.add(Roi1);
-            }
-        }
-        
-         for (int j=0; j<taille;j++){
-            if(j!=2){
                 grille.grille[j][4].addPion(4,j,"red","non");
                 Pion Pion2 = new Pion(new PionConsole(0,j,"red","non"),10,10);
                 j2.PionsJ.add(Pion2);
             }
             else{
+                grille.grille[j][0].addPion(0,j,"blue","oui");
+                Pion Roi1 = new Pion(new PionConsole(0,j,"blue","oui"),30,30);
+                j1.PionsJ.add(Roi1);
                 grille.grille[j][4].addPion(4,j,"red","oui");
                 Pion Roi2 = new Pion(new PionConsole(0,j,"red","oui"),10,10);
                 j2.PionsJ.add(Roi2);
             }
         }
-        creerMain();
+        //creerMain();
     }
     
-    public ArrayList<Coord> CoordPossible(Coord Coordi, CarteConsole Carte){
+    public  ArrayList<Coord> CoordPossible(Coord Coordi, CarteConsole Carte){
         Coord f = null;
         ArrayList<Coord> CoordPossibles = null;
         for (int j=0; j<2; j++){
@@ -191,6 +188,7 @@ public class Plateau {
             }
         }
         return CoordPossibles;
+
     }
     
     public void VerifCoordPossible(Joueur joueur, ArrayList<Coord> CoordPossibles){

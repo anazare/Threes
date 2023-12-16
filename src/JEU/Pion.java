@@ -21,10 +21,11 @@ public class Pion extends JButton{
         this.l = l;
         this.L = L;
     }
-        @Override
+    
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-         if (pion.roi == "oui"){
+         if ("oui".equals(pion.roi)){
             this.setText("R");
         } else {
              this.setText("P");

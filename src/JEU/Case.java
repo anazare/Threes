@@ -16,6 +16,7 @@ public class Case extends JButton {
     int l;
     int L;
 
+   
     public Case(CaseConsole CaseAssociee, int l, int L) {
         this.CaseAssociee = CaseAssociee;
         this.l = l;
