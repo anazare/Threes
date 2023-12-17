@@ -212,7 +212,7 @@ public final class Plateau {
                 grille.grille[a][b].Gris();
                 }
         }
-    }
+    } // a expliquer 
     
     public void DeplacerPion(Pion Pion,int X,int Y,Joueur Joueur2){
         grille.grille[X][Y].SuppPion();

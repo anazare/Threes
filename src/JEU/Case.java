@@ -13,14 +13,14 @@ import javax.swing.JButton;
  */
 public class Case extends JButton {
     CaseConsole CaseAssociee;
-    int l;
-    int L;
+    int l=110;
+    int L=110;
 
    
-    public Case(CaseConsole CaseAssociee, int l, int L) {
+    public Case(CaseConsole CaseAssociee) {
         this.CaseAssociee = CaseAssociee;
-        this.l = l;
-        this.L = L;
+//        this.l = l;
+//        this.L = L;
     }
     
     @Override

@@ -29,12 +29,14 @@ public class Jeu_Principale extends javax.swing.JFrame {
     }
     
     public void desactiverToutesCases(){
-        Case c;
+        /*CaseConsole bouton_case;*/
+        //Case c= new Case(bouton_case); // C EST PAS VRAIMENT NOUVEAU ...
         for (int i=0; i<5; i++){
             for (int j=0; j<5; j++){
-                //plateau.grille.grille[i][j]= c.CaseAssociee; // je voudrais la case pour avoir acces au méthodes de jButton
-                //c.setClickable(false);
-                // j'ai besoin que la case soit de type case et son de type case console 
+                CaseConsole bouton_case =  plateau.grille.grille[i][j];
+                Case c = (Case) bouton_case;
+                c.setClickable(false);
+                // j'ai besoin que la case soit de type case et non de type case console 
                 // voir comment s'utilisent les methodes setClickable(false) et setEnabled(true) (il faut peut être import un package)
             }
         }
@@ -81,7 +83,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
         this.revalidate();
         for (int i = 0; i < 5; i++) {
             for (int j=0; j < 5; j++ ) {
-                Case bouton_case = new Case(plateau.grille.grille[i][j], 110,110);
+                Case bouton_case = new Case(plateau.grille.grille[i][j]);
                 PanneauGrille.add(bouton_case);
             }
         }
@@ -98,23 +100,23 @@ public class Jeu_Principale extends javax.swing.JFrame {
             Carte bouton_carte = new Carte(plateau.j1.MainJ.get(i), 170,30);
             PanneauCarteJ1.add(bouton_carte); // ajout au Jpanel PanneauCarte1
             
-            ActionListener ecouteurClick = new ActionListener() {
-                //final int j = i;
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    /*ajouter l'action de la carte 
-                    pour i allant de 0 à la taille de la liste des coordonnées possible 
-                    -> grise les cellules 
-                    -> setEnabled(false) tous les boutons sauf ceux des cases grisées 
-                    */ //-> plus besoin les deux méthodes devraient suffir 
-                    desactiverToutesCases();
-                    //activerCasesDepPossible(CarteSelectionne); //this : carte sur laquelle le joueur à cliqué ! 
-                    // trouver un autre moyen (utiliser un paramètre carte sélectionnée) ? comment le mettre à jour 
-                    
-                }
-            };
-            bouton_carte.addActionListener(ecouteurClick);
-            PanneauCarteJ1.add(bouton_carte);
+//            ActionListener ecouteurClick = new ActionListener() {
+//                //final int j = i;
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    /*ajouter l'action de la carte 
+//                    pour i allant de 0 à la taille de la liste des coordonnées possible 
+//                    -> grise les cellules 
+//                    -> setEnabled(false) tous les boutons sauf ceux des cases grisées 
+//                    */ //-> plus besoin les deux méthodes devraient suffir 
+//                    desactiverToutesCases();
+//                    //activerCasesDepPossible(CarteSelectionne); //this : carte sur laquelle le joueur à cliqué ! 
+//                    // trouver un autre moyen (utiliser un paramètre carte sélectionnée) ? comment le mettre à jour 
+//                    
+//                }
+//            };
+//            bouton_carte.addActionListener(ecouteurClick);
+//            PanneauCarteJ1.add(bouton_carte);
         }
         
         
@@ -130,18 +132,18 @@ public class Jeu_Principale extends javax.swing.JFrame {
             Carte bouton_carte = new Carte(plateau.j1.MainJ.get(i), 170,30);
             PanneauCarteJ2.add(bouton_carte); // ajout au Jpanel PanneauCarte1
             
-            ActionListener ecouteurClick = new ActionListener() {
-                //final int j = i; jsp si c'est utile 
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    desactiverToutesCases();
-                    //activerCasesDepPossible(CarteSelectionne); //this : carte sur laquelle le joueur à cliqué ! est ce possible de l'utiliser comme ca ? 
-                    // trouver un autre moyen (utiliser un paramètre carte sélectionnée) ? comment le mettre à jour 
-                }
-            };
-            
-            bouton_carte.addActionListener(ecouteurClick);
-            PanneauCarteJ2.add(bouton_carte);
+//            ActionListener ecouteurClick = new ActionListener() {
+//                //final int j = i; jsp si c'est utile 
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    desactiverToutesCases();
+//                    //activerCasesDepPossible(CarteSelectionne); //this : carte sur laquelle le joueur à cliqué ! est ce possible de l'utiliser comme ca ? 
+//                    // trouver un autre moyen (utiliser un paramètre carte sélectionnée) ? comment le mettre à jour 
+//                }
+//            };
+//            
+//            bouton_carte.addActionListener(ecouteurClick);
+//            PanneauCarteJ2.add(bouton_carte);
         }
         
         //Création du Panneau de la defosse 
@@ -319,22 +321,16 @@ public class Jeu_Principale extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Jeu_Principale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Jeu_Principale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Jeu_Principale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Jeu_Principale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Jeu_Principale().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Jeu_Principale().setVisible(true);
         });
     }
 
