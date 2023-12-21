@@ -14,17 +14,9 @@ public class CarteConsole {
     String nom;
     ArrayList<Coord> deplacementAutorise ; 
 
-    /**
-     * Créé une carte qui possède un nom et quatre déplacement possibles associés (qui vont être rangés dans une ArrayList). 
-     * @param nom
-     * @param Coord1
-     * @param Coord2
-     * @param Coord3
-     * @param Coord4
-     */
     public CarteConsole(String nom,Coord Coord1,Coord Coord2,Coord Coord3,Coord Coord4) {
         this.nom = nom;
-        this.deplacementAutorise = new ArrayList<>();
+        this.deplacementAutorise = new ArrayList<Coord>();
         deplacementAutorise.add(Coord1);
         deplacementAutorise.add(Coord2);
         deplacementAutorise.add(Coord3);

@@ -10,6 +10,7 @@ package JEU;
  */
 public class PionConsole {
     String roi;
+    boolean gris = false;
     int X;
     int Y;
     String couleur;
@@ -21,18 +22,55 @@ public class PionConsole {
         this.roi = roi;
     }
     
-    public String getColor(){
-        return couleur;
+    
+   public void SuppPion(){
+       couleur = "white";
+    }
+   
+    public void Gris(){
+        gris = true;
+    }
+    
+     public void noGris(){
+        gris = false;
+    }
+
+    public void addPion(int X1, int Y1, String couleur1,String roi1){
+        X=X1;
+        Y=Y1;
+        couleur=couleur1;
+        roi = roi1;
+    }
+    
+    public void deplace(String couleur1,String roi1){
+        couleur = couleur1;
+        roi = roi1;
     }
 
     @Override
     public String toString() {
-        if (roi == "oui"){
-            return "R";
-        } else {
-            return "P";
+          if (couleur == "white"){
+            return "";
+          }
+          else{
+                if (roi == "oui"){
+                    if (couleur == "red" ){
+                        return "RR";
+                    }
+                    else{
+                        return "RB";
+                    }
+                    
+                } else {
+                    if (couleur == "red" ){
+                        return "PR";
+                    }
+                    else{
+                        return "PB";
+                    }
+                }
+            }
         }
     }
     
     
-}

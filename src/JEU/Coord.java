@@ -15,7 +15,8 @@ public class Coord {
 
     public Coord(int X, int Y) {
         coordonnees = new ArrayList<>();
-        coordonnees.add(X);
-        coordonnees.add(Y);
+        coordonnees.add(0,X);
+        coordonnees.add(1,Y);
     }    
 }
+

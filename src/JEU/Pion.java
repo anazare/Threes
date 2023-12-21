@@ -4,6 +4,7 @@
  */
 package JEU;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JButton;
 
@@ -21,14 +22,24 @@ public class Pion extends JButton{
         this.l = l;
         this.L = L;
     }
-    
-    @Override
+        @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-         if ("oui".equals(pion.roi)){
-            this.setText("R");
-        } else {
-             this.setText("P");
+        if (pion.toString() == "PB"){
+        g.fillOval(13,13,80,80);
+        g.setColor(Color.BLUE);
         }
-    }
+        if (pion.toString() == "RB"){
+        g.fillRect(13,13,80,80);
+        g.setColor(Color.BLUE);
+        }
+        if (pion.toString() == "PR"){
+        g.fillOval(13,13,80,80);
+        g.setColor(Color.RED);
+        }
+        if (pion.toString() == "RR"){
+        g.fillRect(13,13,80,80);
+        g.setColor(Color.RED);
+        }
+}
 }

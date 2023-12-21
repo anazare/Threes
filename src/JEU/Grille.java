@@ -10,15 +10,15 @@ package JEU;
  */
 public class Grille {
     int taille;
-    CaseConsole[][] grille;
+    Pion[][] grille;
     
 
     public Grille(int taille) {
         this.taille = taille;
-        grille = new CaseConsole[taille][taille];
+        grille = new Pion[taille][taille];
         for (int i=0; i<taille;i++){
             for (int j=0; j<taille;j++){
-                grille[i][j] =new CaseConsole();
+                grille[i][j] =new Pion(new PionConsole(i,j,"white","non"),110,110);
             }
         }
     }
