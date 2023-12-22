@@ -65,16 +65,16 @@ public class Jeu_Principale extends javax.swing.JFrame {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-//                       if (joueur.Couleur == pionselect.pion.couleur) {
+//                      if (joueur.Couleur == pionselect.pion.couleur) {
                         if (CasePossible.size() != 0) {
                             for (int o = 0; o < CasePossible.size(); o++) {
                                 if (pionselect == CasePossible.get(o)) {
                                     plateau.DeplacerPion(PionSelectionne, pionselect.pion.X, pionselect.pion.Y);
-                                    pionselect = new Pion(null, 0, 0);
+//                                    pionselect = new Pion(null, 0, 0);
                                     plateau.EnleverPion(PionSelectionne.pion);
                                     activerToutesCases();
                                     CasePossible = new ArrayList<Pion>();
-                                    PionSelectionne = new Pion(null, 0, 0);
+                                    
                                     // qd il joue reactive ses cartes et echange la carte utilise avec celle du millieu
                                     for (int k = 0; k < 5; k++) {
                                         if (CarteSelectionne == plateau.Main.get(k)) {
@@ -143,6 +143,9 @@ public class Jeu_Principale extends javax.swing.JFrame {
                 Defausse.remove(Cartes.get(2));
                 Defausse.add(carte);
                 PanneauCarteJ1.add(Cartes.get(2));
+                Carte translat = Cartes.get(2);
+                Cartes.set(2,carte);
+                Cartes.set(0, translat);
             }
         };
         carte1.addActionListener(Carte1);
@@ -163,6 +166,9 @@ public class Jeu_Principale extends javax.swing.JFrame {
                 Defausse.repaint();
                 PanneauCarteJ1.revalidate();
                 PanneauCarteJ1.repaint();
+                Carte translat = Cartes.get(2);
+                Cartes.set(2,carte);
+                Cartes.set(1, translat);
             }
         };
         carte2.addActionListener(Carte2);
@@ -179,6 +185,9 @@ public class Jeu_Principale extends javax.swing.JFrame {
                 Defausse.remove(Cartes.get(2));
                 Defausse.add(carte);
                 PanneauCarteJ2.add(Cartes.get(2));
+                Carte translat = Cartes.get(2);
+                Cartes.set(2,carte);
+                Cartes.set(3, translat);
             }
         };
         carte4.addActionListener(Carte4);
@@ -199,6 +208,9 @@ public class Jeu_Principale extends javax.swing.JFrame {
                 Defausse.repaint();
                 PanneauCarteJ2.revalidate();
                 PanneauCarteJ2.repaint();
+                Carte translat = Cartes.get(2);
+                Cartes.set(2,carte);
+                Cartes.set(4, translat);
             }
         };
         carte5.addActionListener(Carte5);
@@ -229,9 +241,10 @@ public class Jeu_Principale extends javax.swing.JFrame {
 //            carte5.setIcon(carte5.icon);
         PanneauCarteJ2.add(carte4); // ajout au Jpanel PanneauGrille
         PanneauCarteJ2.add(carte5); // ajout au Jpanel PanneauGrille
-
-        System.out.println();
-        carteMove(plateau.Main);
+        
+        while(plateau.Victoire(joueur)!=0){
+            this.dispose();                              
+        }
     }
 
     public void changejoueur(Joueur j, Joueur adv) {

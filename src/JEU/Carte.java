@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package JEU;
-
+ 
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.ImageObserver;

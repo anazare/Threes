@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package JEU;
-
+ 
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -222,8 +222,7 @@ public class Plateau {
        grille.grille[X][Y].pion.roi = Pion.pion.roi;
     }
     public void EnleverPion(PionConsole Pion){
-        this.grille.grille[Pion.Y][Pion.X].pion.couleur = "white";
-        this.grille.grille[Pion.Y][Pion.X].pion.roi = "non";
+        this.grille.grille[Pion.X][Pion.Y].pion = new PionConsole(Pion.X,Pion.Y,"white","non");
     }
     
     public int Victoire(Joueur joueur){
@@ -235,7 +234,7 @@ public class Plateau {
                 return 2;
             }
         }
-        if (grille.grille[5][3] == joueur.PionsJ.get(4)){
+        if (grille.grille[4][2].pion.roi == joueur.PionsJ.get(2).pion.roi){
             if (joueur==j1){
             return 1;
             }
