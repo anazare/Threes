@@ -26,125 +26,14 @@ public class Carte extends JButton {
         this.CarteAssociee = CarteAssociee;
         this.l = l;
         this.L = L;
-              if ("boar".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("boar.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("cobra".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("cobra.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("crab".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("crab.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("crane".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("crane.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("dragon".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("dragon.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("eel".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("eel.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("elephant".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("elephant.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("frog".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("frog.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("goose".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("goose.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("horse".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("horse.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("mantis".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("mantis.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("monkey".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("monkey.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("ox".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("ox.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("rabbit".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("rabbit.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else if ("rooster".equals(CarteAssociee.nom)) {
-            try {
-                Image img = ImageIO.read(getClass().getResource("rooster.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
-        } else {
-            try {
-                Image img = ImageIO.read(getClass().getResource("cobra.jpg"));
-                Image img1 = img.getScaledInstance(315, 179, Image.SCALE_DEFAULT);
-                this.icon = new ImageIcon(img1);
-            } catch (IOException ex) {
-            }
         }
-    }
     
-        @Override
+    @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(icon.getImage(), 0, 0, (ImageObserver) icon);
+       super.paintComponent(g);
+       g.drawString(CarteAssociee.toString(),l,L);
+//        g.drawImage(icon.getImage(), 0, 0, (ImageObserver) icon);
     }
-
 }
+
+

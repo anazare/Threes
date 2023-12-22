@@ -218,10 +218,12 @@ public class Plateau {
     }
     
     public void DeplacerPion(Pion Pion,int X,int Y){
-       this.grille.grille[X][Y] = Pion;
+       grille.grille[X][Y].pion.couleur = Pion.pion.couleur;
+       grille.grille[X][Y].pion.roi = Pion.pion.roi;
     }
     public void EnleverPion(PionConsole Pion){
         this.grille.grille[Pion.Y][Pion.X].pion.couleur = "white";
+        this.grille.grille[Pion.Y][Pion.X].pion.roi = "non";
     }
     
     public int Victoire(Joueur joueur){
@@ -246,9 +248,12 @@ public class Plateau {
         }
     }
     
-    public void ActualiserMain(Joueur joueur,CarteConsole carte,int indice){
-        CarteConsole x = Main.get(3);
-        joueur.MainJ.set(indice,x);
-        Main.set(3,carte);
+    public void ActualiserMain(CarteConsole carte,int indice){
+        CarteConsole x = Main.get(2);
+        System.out.println("oppcarte" +carte);
+        System.out.println("oppCartemillieu" + Main.get(2));
+        Main.set(indice,x);
+        Main.set(2,carte);
+        System.out.println("oppMain" + Main);
     }
 }
