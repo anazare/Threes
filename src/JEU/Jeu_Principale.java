@@ -4,231 +4,238 @@
  */
 package JEU;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-
 
 /**
  *
  * @author redou
  */
 public class Jeu_Principale extends javax.swing.JFrame {
+
     Plateau plateau;
     CarteConsole CarteSelectionne;
     Pion PionSelectionne;
-    PionConsole CaseSelectionne;
+    ArrayList<Carte> Cartes;
+    ArrayList<Pion> CasePossible;
     Joueur joueur;
     Joueur adversaire;
-    int tour;
     int i;
     int j;
-    
+
     /**
      * Creates new form Jeu_Principale
      */
-
     public Jeu_Principale() {
         initComponents();
         this.plateau = new Plateau();
-        this.CarteSelectionne=null;
-        this.CaseSelectionne=null;
+        this.Cartes = new ArrayList();
+        this.CasePossible = new ArrayList<Pion>();
+        this.CarteSelectionne = new CarteConsole(null, null, null, null, null);
         this.joueur = plateau.j1;
-        this.adversaire=plateau.j1;
-        this.tour=0;
+        this.adversaire = plateau.j2;
+        this.PionSelectionne = new Pion(new PionConsole(0,0,"white","non"),0,0);
         PanneauGrille.setLayout(new GridLayout(5, 5));
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200,5*110, 5*110));
-            this.pack();
-            this.revalidate();
-        for ( i=0; i < 5; i++) {
-            for ( j=0; j < 5; j++ ) {
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 5 * 110, 5 * 110));
+        this.pack();
+        this.revalidate();
+        for (i = 0; i < 5; i++) {
+            for (j = 0; j < 5; j++) {
                 Pion bouton = plateau.grille.grille[i][j];
                 PanneauGrille.add(plateau.grille.grille[i][j]);
-                 ActionListener MettrePion = new ActionListener() {
-                            final int b = i;
-                            final int c = j;
-                            Pion pionselect2 = plateau.grille.grille[b][c];
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                               
-                            }
-                        };
+                ActionListener MettrePion = new ActionListener() {
+                    final int b = i;
+                    final int c = j;
+                    Pion pionselect2 = plateau.grille.grille[b][c];
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                    }
+                };
                 ActionListener SelectPion = new ActionListener() {
                     final int b = i;
                     final int c = j;
                     Pion pionselect = plateau.grille.grille[b][c];
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if (joueur.Couleur == pionselect.pion.couleur) {
+//                       if (joueur.Couleur == pionselect.pion.couleur) {
+                        if (CasePossible.size()!=0){
+                        for (int o = 0; o < CasePossible.size(); o++) {
+                             if (pionselect == CasePossible.get(o)){
+                                 plateau.DeplacerPion(PionSelectionne,pionselect.pion.X,pionselect.pion.Y);
+                                 pionselect = new Pion(null,0,0);
+                                 plateau.EnleverPion(PionSelectionne.pion);
+                                 activerToutesCases();
+                                 CasePossible = new ArrayList<Pion>();
+                                 PionSelectionne = new Pion(null,0,0);
+                                 // qd il joue reactive ses cartes et echange la carte utilise avec celle du millieu
+                                 for (int k = 0;k<5;k++){
+                                     if(CarteSelectionne == plateau.Main.get(k)){
+                                         plateau.ActualiserMain(CarteSelectionne,k);
+                                         CarteSelectionne = new CarteConsole(null,null,null,null,null);
+                                     }
+                                 }
+                             }
+                        }
+                        }
+                        else{
                             for (int a = 0; a < 2; a++) {
                                 if (CarteSelectionne == joueur.MainJ.get(a)) {
                                     desactiverToutesCases();
+                                    PionSelectionne = pionselect;
+                                    System.out.println("oppPion"+PionSelectionne.pion.X + "" + PionSelectionne.pion.Y);
                                 }
-                                activerCasesDepPossible(pionselect, joueur, CarteSelectionne);
-//                                metaction(MettrePion);
-//                                enleveaction(this);
+                            }
+                            activerCasesDepPossible(pionselect, joueur, CarteSelectionne);
                             }
                         }
-                        else{
-                             Joueur j = joueur;
-                                joueur = adversaire;
-                                adversaire = j;
-                                Move(pionselect,plateau.grille.grille[b][c].pion.X,plateau.grille.grille[b][c].pion.Y);
-                                activerToutesCases();
-                                noGris();
-                        }
-                    }
-                };
-                bouton.addActionListener(SelectPion);
+                    };
+
+                    bouton.addActionListener (SelectPion);
+                }
+                plateau.initialiserPion();
             }
-            plateau.initialiserPion();
-        }
-        
-        Defausse.setLayout(new GridLayout(1, 1));
-        getContentPane().add(Defausse, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10,300, 175));
+
+            PanneauCarteJ1.setLayout(new BorderLayout());
+            getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 1250, 780));
             this.pack();
             this.revalidate();
-            Carte carte = new Carte(plateau.Main.get(2), 170,30);
-            carte.setIcon(carte.icon);
-            Defausse.add(carte);
-        
-            PanneauCarteJ1.setLayout(new GridLayout(2, 1));
-            getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280,300, 350));
-            this.pack();
-            this.revalidate();
-            Carte carte2 = new Carte(plateau.j1.MainJ.get(1), 170,30);
-            Carte carte1 = new Carte(plateau.j1.MainJ.get(0), 170,30);
-            carte1.setIcon(carte1.icon);
-            carte2.setIcon(carte2.icon);
-            PanneauCarteJ1.add(carte1); // ajout au Jpanel PanneauGrille
+            Carte carte = new Carte(plateau.Main.get(2), 315, 179);
+            Carte carte2 = new Carte(plateau.Main.get(1), 315, 179);
+            Carte carte1 = new Carte(plateau.Main.get(0), 315, 179);
+            Carte carte5 = new Carte(plateau.Main.get(3), 315, 179);
+            Carte carte4 = new Carte(plateau.Main.get(4), 315, 179);
+            Cartes.add(carte);Cartes.add(carte5);Cartes.add(carte4);Cartes.add(carte1);Cartes.add(carte2);
+//            carte1.setIcon(carte1.icon);
+//            carte2.setIcon(carte2.icon);
+//            carte.setIcon(carte.icon);
+            PanneauCarteJ1.add(carte1,BorderLayout.WEST);
+            PanneauCarteJ1.add(carte2,BorderLayout.WEST);
+            PanneauCarteJ1.add(carte, BorderLayout.NORTH);
+            PanneauCarteJ1.add(carte5, BorderLayout.EAST);
+            PanneauCarteJ1.add(carte4, BorderLayout.EAST);
+// ajout au Jpanel PanneauGrille
             ActionListener Carte1 = new ActionListener() {
                 Carte carte;
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        carte = carte1;
-                        carte1.setEnabled(false);
-                        carte2.setEnabled(false);
-                        CarteSelectionne = carte.CarteAssociee;
-                    }  
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    carte = carte1;
+                    CarteSelectionne = carte.CarteAssociee;
+                }
             };
             carte1.addActionListener(Carte1);
-   
-            PanneauCarteJ1.add(carte2); // ajout au Jpanel PanneauGrille
-            ActionListener Carte2 = new ActionListener() {   
+            
+            ActionListener Carte2 = new ActionListener() {
                 Carte carte;
+
                 @Override
-                    public void actionPerformed(ActionEvent e) {
-                        carte = carte2;
-                        carte1.setEnabled(false);
-                        carte2.setEnabled(false);
-                        CarteSelectionne = carte.CarteAssociee;
-                    }   
+                public void actionPerformed(ActionEvent e) {
+                    carte = carte2;
+                    CarteSelectionne = carte.CarteAssociee;
+                }
             };
             carte2.addActionListener(Carte2);
-           
             
-        PanneauCarteJ2.setLayout(new GridLayout(2, 1));
-        getContentPane().add(PanneauCarteJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 280,300, 350));
-            this.pack();
-            this.revalidate();
-            Carte carte5 = new Carte(plateau.j2.MainJ.get(1), 170,30);
-            Carte carte4 = new Carte(plateau.j2.MainJ.get(0), 170,30);
-            carte4.setIcon(carte4.icon);
-            carte5.setIcon(carte5.icon);
-            PanneauCarteJ2.add(carte4); // ajout au Jpanel PanneauGrille
-                    ActionListener Carte4 = new ActionListener() {
-                    Carte carte;
-                     @Override
-                    public void actionPerformed(ActionEvent e) {
-                       carte = carte4;
-                       carte4.setEnabled(false);
-                       carte5.setEnabled(false);
-                       CarteSelectionne = carte.CarteAssociee;
-                    }   
+             ActionListener Carte4 = new ActionListener() {
+                Carte carte;
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    carte = carte4;
+                    CarteSelectionne = carte.CarteAssociee;
+                }
             };
             carte4.addActionListener(Carte4);
             
-            PanneauCarteJ2.add(carte5); // ajout au Jpanel PanneauGrille
             ActionListener Carte5 = new ActionListener() {
-                    Carte carte;
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        carte = carte5;
-                        carte4.setEnabled(false);
-                        carte5.setEnabled(false);
-                    }   
+                Carte carte;
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    carte = carte5;
+                    CarteSelectionne = carte.CarteAssociee;
+                }
             };
             carte5.addActionListener(Carte5);
-            CarteSelectionne = carte.CarteAssociee;
-    }
-    public void Move(Pion Pion,int X,int Y){
-            plateau.DeplacerPion(Pion, X, Y);
-            plateau.EnleverPion(Pion.pion);
+            
         }
+    
 
-    public void changejoueur(Joueur j,Joueur adv){
-        joueur=adv;
-        adversaire=j;
+//    public void Move(Pion Pion, int X, int Y) {
+//        plateau.DeplacerPion(Pion, X, Y);
+//        plateau.EnleverPion(Pion.pion);
+//    }
+
+    public void changejoueur(Joueur j, Joueur adv) {
+        joueur = adv;
+        adversaire = j;
+    }
+
+    public void CarteTour(Joueur adv) {
+
     }
     
-    public void CarteTour(Joueur adv){
-        
-    }
+
     /**
-     *Fonction qui desactive toutes les cases 
+     * Fonction qui desactive toutes les cases
      */
-    public void desactiverToutesCases(){
-        for (int i=0; i<5; i++){
-            for (int j=0; j<5; j++){
-                plateau.grille.grille[i][j].setEnabled(false); 
+    public void desactiverToutesCases() {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                plateau.grille.grille[i][j].setEnabled(false);
             }
+            Cartes.get(i).setEnabled(false);
         }
     }
-    
-      public void activerToutesCases(){
-        for (int i=0; i<5; i++){
-            for (int j=0; j<5; j++){
-                plateau.grille.grille[i][j].setEnabled(true); 
+
+    public void activerToutesCases() {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                plateau.grille.grille[i][j].setEnabled(true);
             }
+            Cartes.get(i).setEnabled(true);
         }
     }
-      
-    public void noGris(){
+
+    public void noGris() {
         plateau.noGris();
     }
-      
-    public void activerCasesDepPossible(Pion Pion,Joueur jj,CarteConsole CarteSelectionne){
-        Coord co = new Coord(Pion.pion.X,Pion.pion.Y);
-        plateau.VerifCoordPossible(jj,plateau.CoordPossible(co, CarteSelectionne,jj));
-        for (int i=0; i<5; i++){
-            for (int j=0; j<5; j++){
-                if ( plateau.grille.grille[i][j].pion.gris==true){
-                     plateau.grille.grille[i][j].setEnabled(true);           
-                 }
+
+    public void activerCasesDepPossible(Pion Pion, Joueur jj, CarteConsole CarteSelectionne) {
+        Coord co = new Coord(Pion.pion.X, Pion.pion.Y);
+        plateau.VerifCoordPossible(jj, plateau.CoordPossible(co, CarteSelectionne, jj));
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (plateau.grille.grille[i][j].pion.gris == true) {
+                    plateau.grille.grille[i][j].setEnabled(true);
+                    CasePossible.add(plateau.grille.grille[i][j]);
+                }
+            }
+        }
+//        for (int k = 0;k<CasePossible.size();k++){ 
+        System.out.println("opp" + CasePossible.size());
+//        }
+    }
+
+    public void enleveaction(ActionListener a) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                plateau.grille.grille[i][j].removeActionListener(a);
             }
         }
     }
 
-    public void enleveaction(ActionListener a){
-        for (int i=0; i<5; i++){
-            for (int j=0; j<5; j++){
-                     plateau.grille.grille[i][j].removeActionListener(a);           
+    public void metaction(ActionListener a) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                plateau.grille.grille[i][j].addActionListener(a);
             }
+        }
     }
-    }
-    
-      public void metaction(ActionListener a){
-        for (int i=0; i<5; i++){
-            for (int j=0; j<5; j++){
-                     plateau.grille.grille[i][j].addActionListener(a);           
-            }
-    }
-    }
-    
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -241,9 +248,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         PanneauGrille = new javax.swing.JPanel();
-        Defausse = new javax.swing.JPanel();
         PanneauCarteJ1 = new javax.swing.JPanel();
-        PanneauCarteJ2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(-10, 0));
@@ -257,17 +262,9 @@ public class Jeu_Principale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new java.awt.BorderLayout());
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 600, 600));
 
-        Defausse.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Defausse.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(Defausse, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 340, 420));
-
         PanneauCarteJ1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanneauCarteJ1.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 340, 120));
-
-        PanneauCarteJ2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        PanneauCarteJ2.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(PanneauCarteJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 270, 340, 420));
+        getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 1270, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -292,7 +289,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Jeu_Principale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -302,9 +299,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Defausse;
     private javax.swing.JPanel PanneauCarteJ1;
-    private javax.swing.JPanel PanneauCarteJ2;
     private javax.swing.JPanel PanneauGrille;
     private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
