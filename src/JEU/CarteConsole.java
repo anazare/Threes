@@ -14,6 +14,14 @@ public class CarteConsole {
     String nom;
     ArrayList<Coord> deplacementAutorise ; 
 
+     /**
+     *Construit une carte console avec un nom et des vecteurs déplacement associés rangés dans une ArrayList
+     * @param nom
+     * @param Coord1
+     * @param Coord2
+     * @param Coord3
+     * @param Coord4
+     */
     public CarteConsole(String nom,Coord Coord1,Coord Coord2,Coord Coord3,Coord Coord4) {
         this.nom = nom;
         this.deplacementAutorise = new ArrayList<Coord>();
@@ -23,6 +31,10 @@ public class CarteConsole {
         deplacementAutorise.add(Coord4);
     }
 
+  /**
+     * Affiche le nom de la carte 
+     * @return
+     */
     @Override
     public String toString() {
         return  nom + "";
