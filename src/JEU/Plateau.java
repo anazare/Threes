@@ -50,6 +50,9 @@ public class Plateau {
     CarteConsole rooster = new CarteConsole("rooster",rooster1,rooster2,rooster3,rooster4);
     CarteConsole tiger = new CarteConsole("tiger",tiger1,tiger2,nulle,nulle);
 
+ /**
+     * Construit un plateau de jeu avec une grille, deux joueurs, une main de 5 cartes (range la main dans une arraylist)
+     */
     public Plateau() {
         this.j1 = new Joueur("blue");
         this.j2 = new Joueur("red");
@@ -59,6 +62,9 @@ public class Plateau {
         creerMain();
     }
 
+ /**
+     * Tirage aléatoire de 5 cartes sur 15 qui sont ensuite rangées dans une ArrayList
+     */
     public void creerMain(){ 
         Random r = new Random();
         while (Main.size()<5){
@@ -147,7 +153,10 @@ public class Plateau {
         j2.MainJ.add(Main.get(3));
         j2.MainJ.add(Main.get(4));
     }
-    
+
+ /**
+     * Initialise les pions du joueur 1 et du joueur 2 qui sont ensuite rangés dans des listes. 
+     */
     public void initialiserPion(){
         for (int j=0; j<taille;j++){
             if(j!=2){
@@ -168,7 +177,14 @@ public class Plateau {
         }
         creerMain();
     }
-    
+
+ /**
+     *Calcul des coordonnées possibles en fonction du joueur, de la carte sélectionnée, des coordonnées initiales du pion sélectionné
+     * @param Coordi
+     * @param Carte
+     * @param j
+     * @return
+     */
     public ArrayList<Coord> CoordPossible(Coord Coordi, CarteConsole Carte,Joueur j){
             ArrayList<Coord> CoordPossibles = new ArrayList<>();
             for (int i=0; i<4; i++){
@@ -188,7 +204,12 @@ public class Plateau {
             }
         return CoordPossibles;
     }
-    
+
+ /**
+     *Vérifie si les coordonnées de déplacement du pion sont vraiment possibles (par exemple : si le déplacement souhaité est dans la grille ou s'il y a un pion de son équipe) 
+     * @param joueur
+     * @param CoordPossibles
+     */
     public void VerifCoordPossible(Joueur joueur, ArrayList<Coord> CoordPossibles){
         for (int j=0; j<4; j++){
                 Coord c = CoordPossibles.get(j);
@@ -215,15 +236,31 @@ public class Plateau {
             }
         }
     }
-    
+
+ /**
+     *Déplace le pion placé en paramètre aux coordonnées X et Y souhaitées 
+     * @param Pion
+     * @param X
+     * @param Y
+     */
     public void DeplacerPion(Pion Pion,int X,int Y){
        grille.grille[X][Y].pion.couleur = Pion.pion.couleur;
        grille.grille[X][Y].pion.roi = Pion.pion.roi;
     }
+
+ /**
+     *Remplace le pion par un pion blanc 
+     * @param Pion
+     */
     public void EnleverPion(PionConsole Pion){
         this.grille.grille[Pion.X][Pion.Y].pion = new PionConsole(Pion.X,Pion.Y,"white","non");
     }
-    
+
+ /**
+     *Fonction condition de Victoire (roi mangé ou pion sous l'arche) 
+     * @param joueur
+     * @return
+     */
     public int Victoire(Joueur joueur){
         if (joueur.PionsJ.get(2) == null){ 
             if (joueur==j1){
@@ -245,7 +282,12 @@ public class Plateau {
             return 0;
         }
     }
-    
+
+ /**
+     *Actualise la main du joueur en échangeant une carte donnée avec la carte située à l'indice spécifié.
+     * @param carte
+     * @param indice
+     */
     public void ActualiserMain(CarteConsole carte,int indice){
         CarteConsole x = Main.get(2);
         System.out.println("oppcarte" +carte);
