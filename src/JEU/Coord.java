@@ -13,6 +13,11 @@ import java.util.ArrayList;
 public class Coord {
     ArrayList<Integer> coordonnees;
 
+  /**
+     *Construit un vecteur constitué des coordonnées d'un élément
+     * @param X
+     * @param Y
+     */
     public Coord(int X, int Y) {
         coordonnees = new ArrayList<>();
         coordonnees.add(0,X);
