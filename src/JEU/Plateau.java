@@ -211,7 +211,7 @@ public class Plateau {
      *Vide la liste des Coordonnees possibles  
      * @param CoordPossibles
      */
- public void ViderCoordPossibles(ArrayList<Coord> coordp){
+ public void ViderCoordPossibles(){
         for (int j=0; j<4; j++){
             coordp.remove(j);
         }
