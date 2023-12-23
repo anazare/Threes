@@ -12,7 +12,10 @@ public class Grille {
     int taille;
     Pion[][] grille;
     
-
+/**
+     * Construit une grille de pions graphiques avec en paramètre la taille de la grille. 
+     * @param taille
+     */
     public Grille(int taille) {
         this.taille = taille;
         grille = new Pion[taille][taille];
