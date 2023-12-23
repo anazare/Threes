@@ -15,6 +15,10 @@ public class Joueur {
     ArrayList<Pion> PionsJ;
     String Couleur;
 
+  /**
+     * Construit un joueur, il possède une couleur, une main de cartes et des pions 
+     * @param couleur
+     */
     public Joueur(String couleur) {
         this.MainJ = new ArrayList<CarteConsole> ();
         this.PionsJ = new ArrayList<Pion> ();
