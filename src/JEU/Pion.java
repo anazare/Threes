@@ -17,11 +17,23 @@ public class Pion extends JButton{
     int l;
     int L;
 
+ /**
+     *Construit un pion graphique qui a pour paramètre un pionConsole, une longueur et une largeur
+     * @param pion
+     * @param l
+     * @param L
+     */
     public Pion(PionConsole pion, int l, int L) {
         this.pion = pion;
         this.l = l;
         this.L = L;
     }
+
+      /**
+     * Cette fonction permet de colorier en bleu les pions du premier joueur et en rouge celui du deuxième joueur
+     * n plus, les rois sont de forme carrée et les pions normaux sont de forme ronde 
+     * @param g
+     */
         @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
