@@ -17,6 +17,7 @@ public class Plateau {
     Joueur j1 ;
     Joueur j2 ;
     ArrayList<CarteConsole> Main;
+    ArrayList<Coord> coordp;
     Coord nulle = new Coord(20,20),boar1 =new Coord(-1,0),boar2=new Coord(1,0),boar3 = new Coord(0,1);
     Coord cobra1 = new Coord(-1,0),cobra2 =new Coord(1,-1),cobra3=new Coord(1,1);
     Coord crab1 = new Coord(-2,0),crab2 =new Coord(2,0),crab3=new Coord(0,1);
@@ -202,7 +203,18 @@ public class Plateau {
                 f = new Coord(X,Y);
                 CoordPossibles.add(f);
             }
+     this.coordp=CoordPossibles;
         return CoordPossibles;
+    }
+
+     /**
+     *Vide la liste des Coordonnees possibles  
+     * @param CoordPossibles
+     */
+ public void ViderCoordPossibles(ArrayList<Coord> coordp){
+        for (int j=0; j<4; j++){
+            coordp.remove(j);
+        }
     }
 
  /**
@@ -228,6 +240,8 @@ public class Plateau {
                 }
         }
     }
+
+ 
     
     public void noGris(){
         for (int i=0; i<taille;i++){
@@ -236,6 +250,7 @@ public class Plateau {
             }
         }
     }
+
 
  /**
      *Déplace le pion placé en paramètre aux coordonnées X et Y souhaitées 
