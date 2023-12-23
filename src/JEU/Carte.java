@@ -23,7 +23,14 @@ public class Carte extends JButton {
     ImageIcon icon;
     int l;
     int L;
- 
+
+     /**
+     *Construit une carte graphique à partir d'une carte console, d'une longueur et d'une largeur
+     * et lui affecte une image de la carte.
+     * @param CarteAssociee
+     * @param l
+     * @param L
+     */
     public Carte(CarteConsole CarteAssociee, int l, int L) {
         this.CarteAssociee = CarteAssociee;
         this.l = l;
