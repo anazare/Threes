@@ -4,13 +4,11 @@
  */
 package JEU;
 
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.JPanel;
 
 /**
  *
@@ -52,7 +50,6 @@ public class Jeu_Principale extends javax.swing.JFrame {
                     final int b = i;
                     final int c = j;
                     Pion pionselect2 = plateau.grille.grille[b][c];
-
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
@@ -74,7 +71,6 @@ public class Jeu_Principale extends javax.swing.JFrame {
                                     plateau.EnleverPion(PionSelectionne.pion);
                                     activerToutesCases();
                                     CasePossible = new ArrayList<Pion>();
-                                    
                                     // qd il joue reactive ses cartes et echange la carte utilise avec celle du millieu
                                     for (int k = 0; k < 5; k++) {
                                         if (CarteSelectionne == plateau.Main.get(k)) {
@@ -82,11 +78,22 @@ public class Jeu_Principale extends javax.swing.JFrame {
                                             CarteSelectionne = new CarteConsole(null, null, null, null, null);
                                         }
                                     }
+                                    PionSelectionne = new Pion(new PionConsole(0, 0, "white", "non"), 0, 0);
+                                    Fin();
+                                    Joueur h = joueur;
+                                    joueur = adversaire;
+                                    adversaire = h;
+                                    CarteSelectionne = new CarteConsole(null, null, null, null, null);
+                                    System.out.println(CarteSelectionne);
+                                    System.out.println(CasePossible);
                                 }
                             }
                         } else {
                             for (int a = 0; a < 2; a++) {
                                 if (CarteSelectionne == joueur.MainJ.get(a)) {
+                                    System.out.println(CarteSelectionne);
+                                    System.out.println(CasePossible);
+                                    plateau.ActualiserMain(CarteSelectionne, a);
                                     desactiverToutesCases();
                                     PionSelectionne = pionselect;
                                     System.out.println("oppPion" + PionSelectionne.pion.X + "" + PionSelectionne.pion.Y);
@@ -109,16 +116,12 @@ public class Jeu_Principale extends javax.swing.JFrame {
 //            getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 1250, 800));
         this.pack();
         this.revalidate();
-        Carte carte3 = new Carte(plateau.Main.get(2), 50, 50);
-        Carte carte2 = new Carte(plateau.Main.get(1), 50, 50);
-        Carte carte1 = new Carte(plateau.Main.get(0), 50, 50);
-        Carte carte5 = new Carte(plateau.Main.get(3), 50, 50);
-        Carte carte4 = new Carte(plateau.Main.get(4), 50, 50);
-        Cartes.add(carte5);
-        Cartes.add(carte4);
-        Cartes.add(carte1);
-        Cartes.add(carte2);
-        Cartes.add(2,carte3);
+        Carte carte3 = new Carte(plateau.Main.get(2), 300, 175);
+        Carte carte2 = new Carte(plateau.Main.get(1), 300, 175);
+        Carte carte1 = new Carte(plateau.Main.get(0), 300, 175);
+        Carte carte5 = new Carte(plateau.Main.get(3), 300, 175);
+        Carte carte4 = new Carte(plateau.Main.get(4), 300, 175);
+        Cartes.add(0,carte1); Cartes.add(1,carte2);Cartes.add(2,carte3);Cartes.add(3,carte4);Cartes.add(4,carte5);
 //            carte1.setIcon(carte1.icon);
 //            carte2.setIcon(carte2.icon);
 //            carte.setIcon(carte.icon);
@@ -324,6 +327,12 @@ public class Jeu_Principale extends javax.swing.JFrame {
             }
         }
     }
+    
+    public void Fin(){
+        while (plateau.Victoire(joueur) != 0) {
+            this.setVisible(false);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -337,8 +346,10 @@ public class Jeu_Principale extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         PanneauGrille = new javax.swing.JPanel();
         Defausse = new javax.swing.JPanel();
-        PanneauCarteJ1 = new javax.swing.JPanel();
         PanneauCarteJ2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        PanneauCarteJ1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(-10, 0));
@@ -348,21 +359,31 @@ public class Jeu_Principale extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(900, 900));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        PanneauGrille.setBackground(new java.awt.Color(102, 51, 0));
         PanneauGrille.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         PanneauGrille.setLayout(new java.awt.BorderLayout());
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 600, 600));
 
         Defausse.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Defausse.setForeground(new java.awt.Color(255, 255, 255));
+        Defausse.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(Defausse, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 340, 420));
-
-        PanneauCarteJ1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        PanneauCarteJ1.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 340, 120));
 
         PanneauCarteJ2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanneauCarteJ2.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(PanneauCarteJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 270, 340, 420));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/JEU/Showerwall Laminate Straight Edge Urban Concrete Sw48 2440 x 900 MDF.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 730, 710));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/JEU/Showerwall Laminate Straight Edge Urban Concrete Sw48 2440 x 900 MDF.jpeg"))); // NOI18N
+        jLabel2.setText("jLabel1");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 710, 730, 180));
+
+        PanneauCarteJ1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanneauCarteJ1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(PanneauCarteJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 340, 120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -401,6 +422,8 @@ public class Jeu_Principale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauCarteJ1;
     private javax.swing.JPanel PanneauCarteJ2;
     private javax.swing.JPanel PanneauGrille;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 }
