@@ -93,7 +93,7 @@ public class Jeu_Principale extends javax.swing.JFrame {
                                 if (CarteSelectionne == joueur.MainJ.get(a)) {
                                     System.out.println(CarteSelectionne);
                                     System.out.println(CasePossible);
-                                    plateau.ActualiserMain(CarteSelectionne, a);
+                                     plateau.ActualiserMain(CarteSelectionne, a);
                                     desactiverToutesCases();
                                     PionSelectionne = pionselect;
                                     System.out.println("oppPion" + PionSelectionne.pion.X + "" + PionSelectionne.pion.Y);

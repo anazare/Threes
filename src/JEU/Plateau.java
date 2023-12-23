@@ -131,7 +131,7 @@ public class Plateau {
             if (a==13){
                 if (!Main.contains(rabbit)){
                     Main.add(rabbit);
-                }
+                }  
             }
             if (a==14){
                 if (!Main.contains(rooster)){

@@ -26,20 +26,20 @@ public class Pion extends JButton{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (pion.toString() == "PB"){
-        g.fillOval(13,13,80,80);
         g.setColor(Color.BLUE);
+        g.fillOval(13,13,80,80);
         }
         if (pion.toString() == "RB"){
-        g.fillRect(13,13,80,80);
         g.setColor(Color.BLUE);
+        g.fillRect(13,13,80,80);
         }
         if (pion.toString() == "PR"){
+         g.setColor(Color.RED);    
         g.fillOval(13,13,80,80);
-        g.setColor(Color.RED);
         }
         if (pion.toString() == "RR"){
+        g.setColor(Color.RED);     
         g.fillRect(13,13,80,80);
-        g.setColor(Color.RED);
         }
 }
 }
